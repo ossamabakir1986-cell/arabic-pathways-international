@@ -1,0 +1,17 @@
+Arabic Pathways — International v0.2.2
+Individual Sound Tiles
+
+Purpose
+-------
+A0 learners should never need to press one button that sends a row of isolated Arabic letters to speech synthesis.
+
+What changed
+------------
+1. Each isolated letter in the Learn step now has its own large audio tile.
+2. The tile displays the letter and its Arabic letter name.
+3. Tapping ب plays only باء; tapping ت plays only تاء, etc.
+4. Vowelled syllables such as بَ / بِ / بُ are also individual audio tiles.
+5. Single-letter examples use one compact audio button.
+6. Normal and Slow controls remain for actual words and phrases, where speed comparison is useful.
+
+This removes the string/blending problem by design. The browser voice may still sound robotic in local mode; the planned Gemini TTS connection addresses voice quality separately.

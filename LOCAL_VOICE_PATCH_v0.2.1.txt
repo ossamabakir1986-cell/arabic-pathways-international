@@ -1,0 +1,7 @@
+Arabic Pathways International v0.2.1
+Local pronunciation patch
+
+1. Isolated letter sequences are converted to Arabic letter names for playback.
+2. Letter/syllable drills are separated with pauses instead of spoken as one connected string.
+3. Normal and Slow modes use different rates and pause lengths.
+4. Browser speech is still only a temporary local-test voice. Natural production audio comes from Gemini TTS after gateway connection.

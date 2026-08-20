@@ -1,0 +1,21 @@
+Arabic Pathways International v0.2.2 validation
+================================================
+Complete lessons: 5
+Practice questions: 30
+
+PASS - App JS syntax checked with node --check
+PASS - Five complete A0 Unit 1 lessons retained
+PASS - Thirty objective practice questions retained
+PASS - Panel languages limited to English and Arabic
+PASS - No Spanish aid/interface content
+PASS - English learning aid retained
+PASS - Separate audio tile per isolated letter in A0 letter-family lessons
+PASS - Separate audio tile per vowelled syllable in A0 reading drills
+PASS - Multi-letter strings are no longer sent as one local speech request from those tiles
+PASS - Normal/Slow audio retained for real words and phrases
+PASS - Speaking Lab recorder retained
+PASS - Gemini gateway URL remains blank for safe local testing
+PASS - No API key embedded in app config
+PASS - Existing localStorage namespace preserved
+PASS - No dialect/slang track added
+PASS - No Qur'anic/deep heritage content added
