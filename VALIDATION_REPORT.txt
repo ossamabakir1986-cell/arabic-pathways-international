@@ -1,25 +1,11 @@
-Arabic Pathways International v0.3.0 validation
-
-PASS: course-data.js JavaScript syntax
-PASS: app.js JavaScript syntax
-PASS: 7 levels generated
-PASS: 70 units generated
-PASS: 350 lessons generated
-PASS: 50 lessons per level
-PASS: first lesson A0-U1-L1
-PASS: last lesson C2-U10-L5
-PASS: existing localStorage progress key preserved
-PASS: individual A0 sound-tile system preserved
-PASS: Gemini TTS + AI speaking hooks preserved
-PASS: regional context remains MSA, not dialect
-PASS: English/Arabic panels preserved
-PASS: English aid ON/OFF preserved
-PASS: no Qur'anic / deep heritage strand added to the International course
-
-REQUIRES HUMAN REVIEW BEFORE COMMERCIAL RELEASE:
-- Arabic academic proofreading across all 350 lessons
-- level-by-level CEFR-style calibration for Arabic
-- exercise distractor quality and repetition balancing
-- natural TTS checks for all key pronunciation targets
-- listening audio timing and real-device microphone tests
-- final end-of-level exams and placement calibration
+Arabic Pathways International v0.4.0 validation
+Levels: 7
+Units: 70
+Lessons: 350
+Lessons per level: {'A0': 50, 'A1': 50, 'A2': 50, 'B1': 50, 'B2': 50, 'C1': 50, 'C2': 50}
+A0 common-color unit vocabulary count: 44
+A0 common colors present: أَحْمَر, أَزْرَق, أَخْضَر, أَصْفَر, أَبْيَض, أَسْوَد, بُرْتُقَالِيّ, بَنَفْسَجِيّ, وَرْدِيّ, بُنِّيّ, رَمَادِيّ, بَيْج, فَيْرُوزِيّ, ذَهَبِيّ, فِضِّيّ, أَحْمَر / حَمْرَاء, أَزْرَق / زَرْقَاء, أَخْضَر / خَضْرَاء, أَصْفَر / صَفْرَاء, أَبْيَض / بَيْضَاء, أَسْوَد / سَوْدَاء
+Cloud client: productSyncSave/productSyncLoad
+Mobile PWA: install/offline/update handling
+TTS: IndexedDB persistent cache + prefetch + A0/A1 study speed
+Admin portal: present
