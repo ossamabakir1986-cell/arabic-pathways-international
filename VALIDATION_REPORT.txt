@@ -1,4 +1,4 @@
-Arabic Pathways International v0.4.0 validation
+Arabic Pathways International v0.4.1 validation
 Levels: 7
 Units: 70
 Lessons: 350
@@ -7,5 +7,6 @@ A0 common-color unit vocabulary count: 44
 A0 common colors present: أَحْمَر, أَزْرَق, أَخْضَر, أَصْفَر, أَبْيَض, أَسْوَد, بُرْتُقَالِيّ, بَنَفْسَجِيّ, وَرْدِيّ, بُنِّيّ, رَمَادِيّ, بَيْج, فَيْرُوزِيّ, ذَهَبِيّ, فِضِّيّ, أَحْمَر / حَمْرَاء, أَزْرَق / زَرْقَاء, أَخْضَر / خَضْرَاء, أَصْفَر / صَفْرَاء, أَبْيَض / بَيْضَاء, أَسْوَد / سَوْدَاء
 Cloud client: productSyncSave/productSyncLoad
 Mobile PWA: install/offline/update handling
-TTS: IndexedDB persistent cache + prefetch + A0/A1 study speed
+TTS: IndexedDB persistent cache + in-flight deduplication + A0/A1 careful pronunciation
+Student sync: product-separated save/restore + delayed retry + last-sync status
 Admin portal: present

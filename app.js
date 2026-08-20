@@ -2,6 +2,9 @@
   const D = window.ARABIC_COURSE;
   const CFG = window.ARABIC_PATHWAYS_CONFIG || {};
   const KEY = 'arabic-pathways-international-state-v0.1';
+  const PRODUCT_ID = 'arabic-international';
+  const TTS_DB = 'arabic-pathways-tts-v1';
+  const TTS_STORE = 'audio-v0.4.1';
 
   const REGIONS = {
     general:{en:'Arab world (general)',ar:'العالم العربي (عام)',city_en:'an Arab city',city_ar:'مدينة عربية',currency_en:'local currency',currency_ar:'العملة المحلية',building_en:'public building',building_ar:'مبنى عام',food_en:'local food',food_ar:'طعام محلي',nature_en:'local landscape',nature_ar:'البيئة المحلية'},
@@ -26,7 +29,7 @@
       course:'Course',units:'units',lessons:'lessons',completed:'completed',aid:'English aid',region:'Regional context',
       roadmap:'Course roadmap',goal:'Lesson goal',understand:'Understand',review:'Review',use:'Use',what:'What is happening?',
       why:'Why does it matter?',howq:'How does it work?',examples:'Examples',practiceTitle:'Practice',correct:'Correct',incorrect:'Try again',
-      speak:'Speak',write:'Write',reviewTitle:'Quick review',normal:'Normal',slow:'Slow',settings:'Learning settings',
+      speak:'Speak',write:'Write',reviewTitle:'Quick review',normal:'Listen',slow:'Careful pronunciation',settings:'Learning settings',
       interface:'Panel language',name:'Student name',save:'Save',start:'Start Arabic Pathways',onboard:'Set up your learning experience',
       aidChoice:'English learning aid',on:'On',off:'Off',contextHelp:'Regional context changes places, currencies and examples. It never changes the course into dialect.',
       aidHelp:'English is support, not the course language. You can switch it off as your Arabic grows.',journey:'A0–C2 course',
@@ -37,7 +40,7 @@
       deviceVoice:'Device Arabic voice',geminiVoice:'Gemini Arabic voice',voiceStatus:'Voice system',gatewayReady:'Gateway URL configured',
       gatewayPending:'Local fallback mode',heard:'AI heard',pronunciation:'Pronunciation',nextStep:'Next step',regional:'Regional example',
       allLevels:'All levels',currentLevel:'Current level',currentUnit:'Current unit',coverage:'Topic coverage',of:'of',levelProgress:'Level progress',
-      courseStats:'Full curriculum',ready:'Ready',aidLevel:'Aid at this level'
+      courseStats:'Full curriculum',ready:'Ready',aidLevel:'Aid at this level',cloud:'Pathways account & cloud sync',email:'Account email',pin:'Private sync PIN',connect:'Connect & save',syncNow:'Sync now',restore:'Restore on this device',lastSync:'Last sync',notConnected:'Not connected',openAdmin:'Open administration'
     },
     ar:{
       home:'الرئيسية',learn:'تعلّم',practice:'تدريب',progress:'التقدم',profile:'الملف الشخصي',continue:'تابع التعلّم',
@@ -45,7 +48,7 @@
       course:'الدورة',units:'وحدات',lessons:'دروس',completed:'مكتمل',aid:'الدعم بالإنجليزية',region:'السياق الإقليمي',
       roadmap:'خريطة الدورة',goal:'هدف الدرس',understand:'افهم',review:'راجع',use:'استخدم',what:'ما الذي يحدث؟',
       why:'لماذا هذا مهم؟',howq:'كيف يعمل؟',examples:'أمثلة',practiceTitle:'تدريب',correct:'صحيح',incorrect:'حاول مرة أخرى',
-      speak:'تحدث',write:'اكتب',reviewTitle:'مراجعة سريعة',normal:'عادي',slow:'ببطء',settings:'إعدادات التعلّم',
+      speak:'تحدث',write:'اكتب',reviewTitle:'مراجعة سريعة',normal:'استمع',slow:'نطق تعليمي واضح',settings:'إعدادات التعلّم',
       interface:'لغة الواجهة',name:'اسم الطالب',save:'حفظ',start:'ابدأ Arabic Pathways',onboard:'جهّز تجربة التعلّم',
       aidChoice:'الدعم التعليمي بالإنجليزية',on:'تشغيل',off:'إيقاف',contextHelp:'يغيّر السياق الإقليمي الأماكن والعملات والأمثلة، ولا يحوّل الدورة إلى لهجة.',
       aidHelp:'الإنجليزية وسيلة مساعدة وليست لغة الدورة، ويمكن إيقافها مع تقدّمك.',journey:'الدورة الكاملة A0–C2',
@@ -56,7 +59,7 @@
       deviceVoice:'صوت الجهاز العربي',geminiVoice:'صوت Gemini العربي',voiceStatus:'نظام الصوت',gatewayReady:'رابط البوابة مهيأ',
       gatewayPending:'وضع الصوت الاحتياطي',heard:'سمع الذكاء الاصطناعي',pronunciation:'النطق',nextStep:'الخطوة التالية',regional:'مثال إقليمي',
       allLevels:'كل المستويات',currentLevel:'المستوى الحالي',currentUnit:'الوحدة الحالية',coverage:'تغطية الموضوعات',of:'من',levelProgress:'تقدم المستوى',
-      courseStats:'المنهج الكامل',ready:'جاهز',aidLevel:'الدعم في هذا المستوى'
+      courseStats:'المنهج الكامل',ready:'جاهز',aidLevel:'الدعم في هذا المستوى',cloud:'حساب Pathways والمزامنة السحابية',email:'البريد الإلكتروني للحساب',pin:'رمز المزامنة الخاص',connect:'ربط وحفظ',syncNow:'زامن الآن',restore:'استعادة على هذا الجهاز',lastSync:'آخر مزامنة',notConnected:'غير متصل',openAdmin:'فتح الإدارة'
     }
   };
 
@@ -68,10 +71,13 @@
   let recordedBlob = null;
   let recordedUrl = '';
   const ttsCache = new Map();
+  const ttsInflight = new Map();
+  let syncTimer = null;
 
   function defaults(){
     return {view:'home',lang:'en',aid:true,region:'general',name:'',completed:[],currentLesson:'A0-U1-L1',
-      selectedLevel:'A0',selectedUnit:'A0-U1',lessonStep:'learn',answers:{}};
+      selectedLevel:'A0',selectedUnit:'A0-U1',lessonStep:'learn',answers:{},studentId:'',profile:{email:''},
+      sync:{enabled:false,email:'',auth:'',credential:'',lastSyncAt:null,lastStatus:'Not connected',pending:false},updatedAt:null};
   }
   function load(){
     try{
@@ -81,10 +87,12 @@
       if(!D.unitIndex[s.selectedUnit])s.selectedUnit=D.levels[s.selectedLevel].units[0].id;
       if(!D.lessonIndex[s.currentLesson])s.currentLesson='A0-U1-L1';
       if(!Array.isArray(s.completed))s.completed=[];
+      s.profile=Object.assign({email:''},s.profile||{});
+      s.sync=Object.assign(defaults().sync,s.sync||{});
       return s;
     }catch(e){ return defaults(); }
   }
-  function save(){ localStorage.setItem(KEY,JSON.stringify(state)); }
+  function save(){ state.updatedAt=new Date().toISOString();localStorage.setItem(KEY,JSON.stringify(state));queueCloudSync(); }
   const tr=k=>(T[state.lang]||T.en)[k]||T.en[k]||k;
   function esc(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
   function setDir(){document.documentElement.lang=state.lang;document.documentElement.dir=state.lang==='ar'?'rtl':'ltr';}
@@ -162,9 +170,10 @@
 
   function profile(){
     const regionOptions=Object.entries(REGIONS).map(([k,v])=>`<option value="${k}" ${state.region===k?'selected':''}>${esc(v[state.lang==='ar'?'ar':'en'])}</option>`).join('');
+    const connected=Boolean(state.sync?.enabled&&(state.sync.auth||state.sync.credential));
     return shell(`<div class="section-title"><div><h2>${tr('profile')}</h2><p>${tr('settings')}</p></div></div><div class="profile-grid">
       <div class="card"><div class="form-group"><label>${tr('name')}</label><input id="p-name" value="${esc(state.name)}"></div><div class="form-group"><label>${tr('interface')}</label><select id="p-lang"><option value="en" ${state.lang==='en'?'selected':''}>English</option><option value="ar" ${state.lang==='ar'?'selected':''}>العربية</option></select></div><div class="form-group"><label>${tr('region')}</label><select id="p-region">${regionOptions}</select><small>${tr('contextHelp')}</small></div><div class="form-group"><label>${tr('aidChoice')}</label><select id="p-aid"><option value="on" ${state.aid?'selected':''}>${tr('on')}</option><option value="off" ${!state.aid?'selected':''}>${tr('off')}</option></select><small>${tr('aidHelp')}</small></div><button class="btn primary" id="save-profile">${tr('save')}</button></div>
-      <div class="card"><h3>${tr('voiceStatus')}</h3><div class="voice-status ${gatewayConfigured()?'online':'local'}"><span class="status-dot"></span><div><b>${gatewayConfigured()?tr('geminiVoice'):tr('deviceVoice')}</b><small>${gatewayConfigured()?tr('gatewayReady'):tr('gatewayPending')}</small></div></div><hr><h3>${tr('courseStats')}</h3><p><b>${D.stats.levels}</b> levels · <b>${D.stats.units}</b> units · <b>${D.stats.lessons}</b> lessons</p><p><b>Course language:</b> Modern Standard Arabic</p><p><b>Dialect teaching:</b> None. Regional context only.</p><p><b>English aid:</b> strongest at A0/A1 and progressively lighter at higher levels.</p></div>
+      <div class="card"><h3>${tr('cloud')}</h3><p>${connected?`✓ ${state.sync.lastStatus||'Connected'}`:tr('notConnected')}</p><div class="form-group"><label>${tr('email')}</label><input id="sync-email" type="email" value="${esc(state.sync?.email||state.profile?.email||'')}" ${connected?'disabled':''}></div><div class="form-group"><label>${tr('pin')}</label><input id="sync-pin" type="password" minlength="6" autocomplete="current-password"></div><div class="cloud-actions"><button class="btn primary" id="connect-cloud">${tr('connect')}</button><button class="btn ghost" id="sync-cloud" ${connected?'':'disabled'}>${tr('syncNow')}</button><button class="btn ghost" id="restore-cloud">${tr('restore')}</button></div><small>${tr('lastSync')}: ${state.sync?.lastSyncAt?new Date(state.sync.lastSyncAt).toLocaleString():'—'}</small><hr><a class="btn ghost" href="admin/">${tr('openAdmin')}</a><hr><h3>${tr('voiceStatus')}</h3><div class="voice-status ${gatewayConfigured()?'online':'local'}"><span class="status-dot"></span><div><b>${gatewayConfigured()?tr('geminiVoice'):tr('deviceVoice')}</b><small>${gatewayConfigured()?tr('gatewayReady'):tr('gatewayPending')}</small></div></div><hr><h3>${tr('courseStats')}</h3><p><b>${D.stats.levels}</b> levels · <b>${D.stats.units}</b> units · <b>${D.stats.lessons}</b> lessons</p><p><b>Course language:</b> Modern Standard Arabic</p><p><b>Dialect teaching:</b> None. Regional context only.</p><p><b>English aid:</b> strongest at A0/A1 and progressively lighter at higher levels.</p></div>
     </div>`);
   }
 
@@ -179,7 +188,7 @@
   }
 
   function arList(items){return `<div class="arabic box">${(items||[]).map(x=>`<div>${esc(x)}</div>`).join('')}</div>`;}
-  function hearButtons(text){return `<span class="hear-group"><button class="hear" data-speak="${esc(text)}" data-speed="normal">🔊 ${tr('normal')}</button><button class="hear secondary" data-speak="${esc(text)}" data-speed="slow">🐢 ${tr('slow')}</button></span>`;}
+  function hearButtons(text){const careful=/^(A0|A1)$/.test(currentArabicLevel_());return `<span class="hear-group"><button class="hear" data-speak="${esc(text)}" data-speed="normal">🔊 ${tr('normal')}</button>${careful?`<button class="hear secondary" data-speak="${esc(text)}" data-speed="careful">🐢 ${tr('slow')}</button>`:''}</span>`;}
   function teachingTokens(text){
     const cleaned=String(text||'').trim().replace(/[—–|،,؛;]+/g,' ').replace(/\s+/g,' ');
     if(!cleaned)return [];
@@ -261,8 +270,21 @@
     const at=document.getElementById('aid-toggle');if(at)at.onclick=()=>{state.aid=!state.aid;save();render();};
     const sp=document.getElementById('save-profile');if(sp)sp.onclick=()=>{state.name=document.getElementById('p-name').value.trim()||state.name;state.lang=document.getElementById('p-lang').value;state.region=document.getElementById('p-region').value;state.aid=document.getElementById('p-aid').value==='on';save();render();};
     const cp=document.getElementById('create-profile');if(cp)cp.onclick=()=>{state.name=document.getElementById('o-name').value.trim()||'Student';state.lang=document.getElementById('o-lang').value;state.region=document.getElementById('o-region').value;state.aid=document.getElementById('o-aid').value==='on';save();render();};
+    const cc=document.getElementById('connect-cloud');if(cc)cc.onclick=()=>cloudAction(cc,'connect');
+    const sc=document.getElementById('sync-cloud');if(sc)sc.onclick=()=>cloudAction(sc,'save');
+    const rc=document.getElementById('restore-cloud');if(rc)rc.onclick=()=>cloudAction(rc,'restore');
     bindRecorder();
   }
+
+  function newStudentId(){return 'ap_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,10);}
+  async function sha256(text){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('');}
+  async function accountKeys(email,pin){return{auth:await sha256(`EnglishPathways|${email}|${pin}`),credential:await sha256(`EnglishPathwaysPIN|${pin}`)}}
+  function cloudBundle(){const clean=JSON.parse(JSON.stringify(state));clean.sync={...clean.sync,auth:'',credential:''};return{formatVersion:1,productId:PRODUCT_ID,courseVersion:'0.4.1',savedAt:new Date().toISOString(),state:clean};}
+  async function postGatewayJson(payload){const requestId='ap_sync_'+Date.now()+'_'+Math.random().toString(36).slice(2);await fetch(String(CFG.gatewayUrl).trim(),{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({...payload,requestId})});return pollQueued(requestId,45000);}
+  async function cloudSave(){if(!navigator.onLine||!state.sync?.enabled)throw Error('Offline');state.sync.lastStatus='Syncing…';localStorage.setItem(KEY,JSON.stringify(state));const r=await postGatewayJson({action:'productSyncSave',productId:PRODUCT_ID,studentId:state.studentId,email:state.sync.email,auth:state.sync.auth||'',credential:state.sync.credential||'',data:JSON.stringify(cloudBundle()),savedAt:state.updatedAt||new Date().toISOString()});if(!r?.ok)throw Error(r?.error||'Cloud save failed.');state.studentId=r.studentId||state.studentId;state.sync.lastSyncAt=new Date().toISOString();state.sync.lastStatus='Synced';state.sync.pending=false;localStorage.setItem(KEY,JSON.stringify(state));return r;}
+  async function cloudLoad(email,auth,credential){const r=await jsonp({action:'productSyncLoad',productId:PRODUCT_ID,email,auth,credential},30000);if(!r?.ok)throw Error(r?.error||'No Arabic cloud progress found.');const data=typeof r.data==='string'?JSON.parse(r.data):r.data;if(!data?.state)throw Error('Cloud progress is incomplete.');const localUpdated=Date.parse(state.updatedAt||0),remoteUpdated=Date.parse(data.savedAt||data.state.updatedAt||0);if(localUpdated&&remoteUpdated&&localUpdated>remoteUpdated&&!confirm('This device has newer Arabic progress. Replace it with the older cloud copy?'))return false;localStorage.setItem(KEY+'-before-cloud-restore',JSON.stringify(state));state=Object.assign(defaults(),data.state);state.profile=Object.assign({email},state.profile||{});state.studentId=r.studentId||state.studentId||newStudentId();state.sync={...defaults().sync,...(state.sync||{}),enabled:true,email,auth,credential,lastSyncAt:new Date().toISOString(),lastStatus:'Restored',pending:false};localStorage.setItem(KEY,JSON.stringify(state));return true;}
+  function queueCloudSync(){clearTimeout(syncTimer);if(!state.sync?.enabled)return;state.sync.pending=true;state.sync.lastStatus=navigator.onLine?'Changes waiting':'Sync pending';localStorage.setItem(KEY,JSON.stringify(state));syncTimer=setTimeout(()=>cloudSave().catch(()=>{state.sync.pending=true;state.sync.lastStatus='Sync pending';localStorage.setItem(KEY,JSON.stringify(state));}),8000);}
+  async function cloudAction(button,mode){const old=button.textContent;button.disabled=true;button.textContent='…';try{const email=String(document.getElementById('sync-email')?.value||state.sync.email||'').trim().toLowerCase(),pin=String(document.getElementById('sync-pin')?.value||'');if(!email||pin.length<6)throw Error('Enter an email and a PIN of at least 6 characters.');const keys=await accountKeys(email,pin);if(mode==='restore'){if(await cloudLoad(email,keys.auth,keys.credential))render();return;}state.studentId=state.studentId||newStudentId();state.profile.email=email;state.sync={...state.sync,enabled:true,email,...keys,lastStatus:'Connecting…'};localStorage.setItem(KEY,JSON.stringify(state));await cloudSave();render();}catch(e){state.sync.lastStatus='Sync pending';localStorage.setItem(KEY,JSON.stringify(state));alert(e.message||e);button.disabled=false;button.textContent=old;}}
 
   function prepareTeachingSpeech(text){
     const original=String(text||'').trim();if(!original)return {spoken:'',chunks:[]};
@@ -277,8 +299,8 @@
     if(button){button.disabled=true;button.classList.add('busy');button.innerHTML='…';}
     try{
       if(gatewayConfigured()){
-        const level=currentArabicLevel_(),key=`${level}|${speed}|${teaching.spoken}`;let url=ttsCache.get(key);
-        if(!url){const data=await jsonp({action:'arabicTts',text:teaching.spoken,mode:speed,level},35000);if(!data||!data.ok||!data.audioBase64)throw new Error(data&&data.error||'No audio returned.');url=audioUrlFromResponse(data);ttsCache.set(key,url);}
+        const level=currentArabicLevel_(),key=`v0.4.1|${level}|${speed}|${teaching.spoken}`;let url=ttsCache.get(key);
+        if(!url){let blob=await ttsDbGet(key);if(!blob){let pending=ttsInflight.get(key);if(!pending){pending=(async()=>{const data=await jsonp({action:'arabicTts',text:teaching.spoken,mode:speed==='careful'?'slow':'normal',level},35000);if(!data||!data.ok||!data.audioBase64)throw new Error(data&&data.error||'No audio returned.');const b=audioBlobFromResponse(data);await ttsDbPut(key,b);return b;})();ttsInflight.set(key,pending);}try{blob=await pending;}finally{ttsInflight.delete(key);}}url=URL.createObjectURL(blob);ttsCache.set(key,url);}
         if(audioPlayer)audioPlayer.pause();audioPlayer=new Audio(url);await audioPlayer.play();return;
       }
       await fallbackSpeak(teaching.chunks,speed);
@@ -286,8 +308,8 @@
     finally{if(button){button.disabled=false;button.classList.remove('busy');button.innerHTML=label;}}
   }
   function fallbackSpeak(chunks,speed){
-    return new Promise(resolve=>{if(!('speechSynthesis'in window)){resolve();return;}window.speechSynthesis.cancel();const list=Array.isArray(chunks)&&chunks.length?chunks:[''],voices=window.speechSynthesis.getVoices(),arabic=voices.find(v=>/^ar[-_]/i.test(v.lang||''));let i=0;const gap=speed==='slow'?520:260;
-      const next=()=>{if(i>=list.length){resolve();return;}const u=new SpeechSynthesisUtterance(list[i++]);u.lang='ar';u.rate=speed==='slow'?.58:.82;u.pitch=1;if(arabic)u.voice=arabic;u.onend=()=>setTimeout(next,gap);u.onerror=()=>setTimeout(next,gap);window.speechSynthesis.speak(u);};next();
+    return new Promise(resolve=>{if(!('speechSynthesis'in window)){resolve();return;}window.speechSynthesis.cancel();const list=Array.isArray(chunks)&&chunks.length?chunks:[''],voices=window.speechSynthesis.getVoices(),arabic=voices.find(v=>/^ar[-_]/i.test(v.lang||''));let i=0;const gap=speed==='careful'?620:260;
+      const next=()=>{if(i>=list.length){resolve();return;}const u=new SpeechSynthesisUtterance(list[i++]);u.lang='ar';u.rate=speed==='careful'?.5:.82;u.pitch=1;if(arabic)u.voice=arabic;u.onend=()=>setTimeout(next,gap);u.onerror=()=>setTimeout(next,gap);window.speechSynthesis.speak(u);};next();
     });
   }
   function jsonp(params,timeout=15000){
@@ -295,7 +317,10 @@
       const finish=(fn,val)=>{if(done)return;done=true;clearTimeout(timer);delete window[cb];script.remove();fn(val);};window[cb]=data=>finish(resolve,data);const qs=new URLSearchParams(Object.assign({},params,{prefix:cb}));script.src=String(CFG.gatewayUrl).trim()+'?'+qs.toString();script.onerror=()=>finish(reject,new Error('Gateway request failed.'));const timer=setTimeout(()=>finish(reject,new Error('Gateway request timed out.')),timeout);document.head.appendChild(script);
     });
   }
-  function audioUrlFromResponse(data){const mime=String(data.mimeType||'audio/L16').toLowerCase();if(mime.includes('l16')||mime.includes('pcm'))return URL.createObjectURL(pcm16ToWavBlob(data.audioBase64,Number(data.sampleRate||24000)));const bytes=base64Bytes(data.audioBase64);return URL.createObjectURL(new Blob([bytes],{type:data.mimeType||'audio/mpeg'}));}
+  function audioBlobFromResponse(data){const mime=String(data.mimeType||'audio/L16').toLowerCase();if(mime.includes('l16')||mime.includes('pcm'))return pcm16ToWavBlob(data.audioBase64,Number(data.sampleRate||24000));const bytes=base64Bytes(data.audioBase64);return new Blob([bytes],{type:data.mimeType||'audio/mpeg'});}
+  function ttsDb(){return new Promise((ok,no)=>{if(!window.indexedDB)return no(Error('IndexedDB unavailable'));const r=indexedDB.open(TTS_DB,1);r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains(TTS_STORE))r.result.createObjectStore(TTS_STORE)};r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error)})}
+  async function ttsDbGet(k){try{const d=await ttsDb();return await new Promise((ok,no)=>{const r=d.transaction(TTS_STORE).objectStore(TTS_STORE).get(k);r.onsuccess=()=>ok(r.result||null);r.onerror=()=>no(r.error)})}catch(e){return null}}
+  async function ttsDbPut(k,b){try{const d=await ttsDb();await new Promise((ok,no)=>{const t=d.transaction(TTS_STORE,'readwrite');t.objectStore(TTS_STORE).put(b,k);t.oncomplete=ok;t.onerror=()=>no(t.error)})}catch(e){}}
   function base64Bytes(b64){const raw=atob(b64),out=new Uint8Array(raw.length);for(let i=0;i<raw.length;i++)out[i]=raw.charCodeAt(i);return out;}
   function pcm16ToWavBlob(b64,sampleRate){const pcm=base64Bytes(b64),buffer=new ArrayBuffer(44+pcm.length),view=new DataView(buffer),write=(off,s)=>{for(let i=0;i<s.length;i++)view.setUint8(off+i,s.charCodeAt(i));};write(0,'RIFF');view.setUint32(4,36+pcm.length,true);write(8,'WAVE');write(12,'fmt ');view.setUint32(16,16,true);view.setUint16(20,1,true);view.setUint16(22,1,true);view.setUint32(24,sampleRate,true);view.setUint32(28,sampleRate*2,true);view.setUint16(32,2,true);view.setUint16(34,16,true);write(36,'data');view.setUint32(40,pcm.length,true);new Uint8Array(buffer,44).set(pcm);return new Blob([buffer],{type:'audio/wav'});}
 
@@ -321,5 +346,7 @@
   function showVoiceFeedback(g,el){if(!el)return;const english=state.lang==='en',heard=g.transcriptArabic||g.transcript||'',pron=english?(g.pronunciationEnglish||g.pronunciation||''):(g.pronunciationArabic||g.pronunciation||''),next=english?(g.feedbackEnglish||g.feedback||''):(g.feedbackArabic||g.feedback||''),score=Number.isFinite(Number(g.score))?`${g.score}/${g.maxScore||5}`:'';el.innerHTML=`<div class="voice-feedback"><div class="feedback-score">${esc(score)}</div>${heard?`<p><b>${tr('heard')}:</b> <span class="arabic">${esc(heard)}</span></p>`:''}${pron?`<p><b>${tr('pronunciation')}:</b> ${esc(pron)}</p>`:''}${next?`<p><b>${tr('nextStep')}:</b> ${esc(next)}</p>`:''}</div>`;}
 
   render();
+  window.addEventListener('online',()=>{if(state.sync?.enabled&&state.sync?.pending)cloudSave().catch(()=>{});});
+  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&state.sync?.enabled&&state.sync?.pending)cloudSave().catch(()=>{});});
   if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('service-worker.js').catch(()=>{}));
 })();
