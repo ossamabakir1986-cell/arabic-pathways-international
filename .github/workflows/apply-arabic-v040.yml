@@ -1,0 +1,33 @@
+name: Apply Arabic Pathways v0.4.0
+
+on:
+  push:
+    paths:
+      - '.github/workflows/apply-arabic-v040.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild app files
+        run: |
+          cat .deploy/v040/app.part1 .deploy/v040/app.part2 | base64 -d | gzip -d > app.js
+          cat .deploy/v040/course.part1 .deploy/v040/course.part2 .deploy/v040/course.part3 .deploy/v040/course.part4 | base64 -d | gzip -d > course-data.js
+      - name: Verify files
+        run: |
+          echo '2146485c0e2132e2a479025bede4525a5d2e588260878bf01a3c2bc059e63597  app.js' | sha256sum -c -
+          echo '6efb469f685c0f891a1b0e12a6c29f4ee110ebc4197bcbe9504f76429894a590  course-data.js' | sha256sum -c -
+          node --check app.js
+          node --check course-data.js
+      - name: Commit v0.4.0
+        run: |
+          git config user.name 'Arabic Pathways Automation'
+          git config user.email 'actions@users.noreply.github.com'
+          git add app.js course-data.js
+          git diff --cached --quiet && exit 0
+          git commit -m 'Complete Arabic Pathways v0.4.0 upgrade'
+          git push
