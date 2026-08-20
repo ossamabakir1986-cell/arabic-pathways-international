@@ -1,10 +1,20 @@
 {
-  "name": "Arabic Pathways \u2014 International",
+  "id": "./",
+  "name": "Arabic Pathways — International",
   "short_name": "Arabic Pathways",
+  "description": "Modern Standard Arabic learning from A0 to C2.",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
+  "orientation": "any",
+  "lang": "en",
+  "dir": "auto",
   "background_color": "#f6f5ff",
   "theme_color": "#5b5bd6",
+  "categories": [
+    "education",
+    "language"
+  ],
   "icons": [
     {
       "src": "icons/icon.svg",
