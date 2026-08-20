@@ -1,5 +1,6 @@
-const CACHE='arabic-pathways-intl-v0.3.0';
-const ASSETS=['./','index.html','app.css?v=0.3.0','config.js?v=0.3.0','app.js?v=0.3.0','course-data.js?v=0.3.0','manifest.webmanifest','icons/icon.svg'];
-self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
-self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
-self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;e.respondWith(fetch(e.request).then(r=>{const copy=r.clone();caches.open(CACHE).then(c=>c.put(e.request,copy));return r}).catch(()=>caches.match(e.request).then(r=>r||caches.match('./'))))});
+const CACHE='arabic-pathways-intl-v0.4.0';
+const CORE=['./','index.html','app.css?v=0.4.0','config.js?v=0.4.0','app.js?v=0.4.0','mobile-app.js?v=0.4.0','course-data.js?v=0.4.0','manifest.webmanifest','icons/icon.svg','admin/','admin/index.html','admin/admin.css','admin/admin.js'];
+self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));
+self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('arabic-pathways-intl-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
+self.addEventListener('message',e=>{if(e.data==='SKIP_WAITING')self.skipWaiting()});
+self.addEventListener('fetch',e=>{const r=e.request;if(r.method!=='GET')return;const u=new URL(r.url);if(u.origin!==location.origin)return;if(r.mode==='navigate'){e.respondWith(fetch(r).then(x=>{caches.open(CACHE).then(c=>c.put(r,x.clone()));return x}).catch(()=>caches.match(r).then(x=>x||caches.match('./'))));return}const networkFirst=/\.(?:js|css|json|webmanifest)$/.test(u.pathname);if(networkFirst){e.respondWith(fetch(r).then(x=>{if(x&&x.ok)caches.open(CACHE).then(c=>c.put(r,x.clone()));return x}).catch(()=>caches.match(r)));return}e.respondWith(caches.match(r).then(hit=>{const net=fetch(r).then(x=>{if(x&&x.ok)caches.open(CACHE).then(c=>c.put(r,x.clone()));return x}).catch(()=>null);return hit||net}))});
