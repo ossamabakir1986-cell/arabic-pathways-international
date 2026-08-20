@@ -1,756 +1,186 @@
-window.ARABIC_COURSE = {
-  "courseTitle": "Arabic Pathways — International",
-  "courseLanguage": "Arabic",
-  "level": "A0",
-  "unit": {
-    "id": "A0-U1",
-    "title": "Entering Arabic",
-    "subtitle": "Direction, letter shapes, first sounds and first reading habits",
-    "lessons": [
-      {
-        "id": "A0-U1-L1",
-        "title": "Welcome to Arabic",
-        "subtitle": "Right to left, what a letter is, and your first Arabic word",
-        "goal": "Understand how Arabic writing is organised and read the greeting مرحبًا as a whole phrase.",
-        "art": "← العربية →",
-        "learn": {
-          "intro_ar": "مَرْحَبًا",
-          "intro_aid": "Marḥaban means “Hello / Welcome.” You do not need to analyse every letter yet. First, meet Arabic as a complete written and spoken language.",
-          "points_ar": [
-            "العربية تُكتب من اليمين إلى اليسار.",
-            "الحروف العربية قد يتغيّر شكلها قليلًا عندما تتصل.",
-            "نبدأ بالصوت والمعنى، ثم نبني القراءة خطوة خطوة."
-          ],
-          "points_aid": [
-            "Arabic is written from right to left.",
-            "Many Arabic letters connect, so their shape can change slightly inside a word.",
-            "We will learn sound + meaning first, then build accurate reading gradually."
-          ],
-          "flow": [
-            [
-              "Situation",
-              "You see Arabic for the first time."
-            ],
-            [
-              "How it works",
-              "Arabic moves right → left."
-            ],
-            [
-              "What you can say",
-              "مَرْحَبًا"
-            ],
-            [
-              "Use it",
-              "Recognise and say the greeting."
-            ]
-          ]
-        },
-        "understand": {
-          "what": "Arabic is an alphabetic writing system. Letters represent consonants and long vowels; short vowels can be shown with small marks.",
-          "why": "A zero-beginner should learn direction and sound habits before memorising a long alphabet list. This prevents letter-name memorisation without reading ability.",
-          "how": "Start at the right edge of an Arabic word and move left. Do not reverse the individual letters; the whole writing direction changes.",
-          "examples": [
-            [
-              "مَرْحَبًا",
-              "hello / welcome"
-            ],
-            [
-              "العربية",
-              "Arabic"
-            ]
-          ],
-          "note": "At this stage, treat مَرْحَبًا as a useful whole phrase. Detailed letter analysis comes in the next lessons."
-        },
-        "practice": [
-          {
-            "q": "Which direction does normal Arabic writing move?",
-            "opts": [
-              "Left to right",
-              "Right to left",
-              "Top to bottom"
-            ],
-            "a": 1
-          },
-          {
-            "q": "Which item is Arabic script?",
-            "opts": [
-              "HELLO",
-              "مَرْحَبًا",
-              "ABC"
-            ],
-            "a": 1
-          },
-          {
-            "q": "What does مَرْحَبًا mean here?",
-            "opts": [
-              "Goodbye",
-              "Hello / Welcome",
-              "Thank you"
-            ],
-            "a": 1
-          },
-          {
-            "q": "True or false: Arabic letters can look slightly different when they connect.",
-            "opts": [
-              "True",
-              "False"
-            ],
-            "a": 0
-          },
-          {
-            "q": "A good first reading habit is to…",
-            "opts": [
-              "memorise 100 words immediately",
-              "start from the right and follow the word leftward",
-              "write English from right to left"
-            ],
-            "a": 1
-          }
-        ],
-        "use": {
-          "speak_ar": "مَرْحَبًا",
-          "speak_aid": "Say marḥaban slowly, then naturally. Focus on hearing and reproducing the whole word, not spelling it from memory yet.",
-          "write": "On paper, draw an arrow showing the direction Arabic text moves. Then copy مَرْحَبًا once while looking at the model."
-        },
-        "review": [
-          "Arabic text normally begins from the right.",
-          "مَرْحَبًا is a greeting.",
-          "Connected Arabic letters may change shape."
+(() => {
+  const LEVEL_META = {"A0":{"name":"Absolute Beginner","name_ar":"مبتدئ من الصفر","aid":"full","goal":"Build the Arabic script, sound and first communication foundation."},"A1":{"name":"Beginner","name_ar":"مبتدئ","aid":"full","goal":"Handle basic everyday communication in clear Modern Standard Arabic."},"A2":{"name":"Elementary","name_ar":"أساسي","aid":"moderate","goal":"Manage routine social, travel, study and work situations."},"B1":{"name":"Intermediate","name_ar":"متوسط","aid":"light","goal":"Communicate independently in connected speech and text."},"B2":{"name":"Upper Intermediate","name_ar":"فوق المتوسط","aid":"optional","goal":"Use Arabic for professional, public and more complex communication."},"C1":{"name":"Advanced","name_ar":"متقدم","aid":"minimal","goal":"Produce nuanced academic and professional Modern Standard Arabic."},"C2":{"name":"Proficiency","name_ar":"إتقان","aid":"reference","goal":"Demonstrate precise, flexible, high-register Arabic across domains."}};
+  const UNIT_SPECS = [{"title":"Entering Arabic","subtitle":"Direction, first letter families, short vowels","grammar":"script direction and sound-symbol awareness","vocab":[["ا","alif"],["ب","baa"],["ت","taa"],["ث","thaa"],["ج","jiim"],["ح","haa"],["خ","khaa"],["مَرْحَبًا","hello / welcome"],["نَعَم","yes"],["لَا","no"]],"sample_ar":"مَرْحَبًا","sample_en":"Hello / Welcome.","product":"recognise, hear and reproduce the first Arabic letters and greeting","tags":["alphabet","pronunciation","greetings"],"title_ar":"الدخول إلى العربية","id":"A0-U1","level":"A0","number":1},{"title":"Completing the Alphabet","subtitle":"Remaining letters, connected forms and joining rules","grammar":"letter forms and joining","vocab":[["د","daal"],["ذ","dhaal"],["ر","raa"],["ز","zaay"],["س","siin"],["ش","shiin"],["ص","saad"],["ض","daad"],["ط","taa emphatic"],["ظ","zaa emphatic"],["ع","ayn"],["غ","ghayn"],["ف","faa"],["ق","qaaf"],["ك","kaaf"],["ل","laam"],["م","miim"],["ن","nuun"],["ه","haa"],["و","waaw"],["ي","yaa"]],"sample_ar":"بَابٌ — بَيْتٌ — نُورٌ","sample_en":"door — house — light","product":"identify all Arabic letters in isolated and connected forms","tags":["alphabet","joining","reading"],"title_ar":"إكمال الحروف الهجائية","id":"A0-U2","level":"A0","number":2},{"title":"Reading Foundations","subtitle":"Long vowels, sukūn, shadda, tanwīn and hamza basics","grammar":"short and long vowels; sukūn; shadda; tanwīn","vocab":[["بَ","ba"],["بِ","bi"],["بُ","bu"],["بَا","baa"],["بِي","bii"],["بُو","buu"],["مَدّ","lengthening"],["شَدَّة","shadda"],["سُكُون","sukoon"],["تَنْوِين","tanween"],["هَمْزَة","hamza"]],"sample_ar":"كِتَابٌ — مُدَرِّسٌ — سُوقٌ","sample_en":"a book — a teacher — a market","product":"decode fully vowelled beginner words accurately","tags":["reading","vowels","pronunciation"],"title_ar":"أساسيات القراءة","id":"A0-U3","level":"A0","number":3},{"title":"Greetings and Identity","subtitle":"Names, countries, languages and basic courtesy","grammar":"nominal sentences and أنا / أنت","vocab":[["اِسْم","name"],["بَلَد","country"],["لُغَة","language"],["أَنَا","I"],["أَنْتَ","you m."],["أَنْتِ","you f."],["مِن","from"],["مَرْحَبًا","hello"],["شُكْرًا","thank you"],["مَعَ السَّلَامَة","goodbye"]],"sample_ar":"أَنَا سَارَا. أَنَا مِنْ كَنَدَا.","sample_en":"I am Sara. I am from Canada.","product":"introduce yourself and ask another person’s name and country","tags":["identity","countries","courtesy"],"title_ar":"التحية والتعريف بالنفس","id":"A0-U4","level":"A0","number":4},{"title":"Numbers, Colors and Shapes","subtitle":"0–20, basic colours and common shapes","grammar":"هذا / هذه with simple nouns","vocab":[["صِفْر","zero"],["وَاحِد","one"],["اِثْنَان","two"],["ثَلَاثَة","three"],["أَحْمَر","red"],["أَزْرَق","blue"],["أَخْضَر","green"],["أَصْفَر","yellow"],["أَبْيَض","white"],["أَسْوَد","black"],["دَائِرَة","circle"],["مُرَبَّع","square"]],"sample_ar":"هَذَا كِتَابٌ أَزْرَقُ.","sample_en":"This is a blue book.","product":"say simple numbers, colours and shapes","tags":["numbers","colors","shapes"],"title_ar":"الأعداد والألوان والأشكال","id":"A0-U5","level":"A0","number":5},{"title":"Family and People","subtitle":"Family members, age and simple personal descriptions","grammar":"possessive endings and simple adjectives","vocab":[["أَب","father"],["أُم","mother"],["أَخ","brother"],["أُخْت","sister"],["اِبْن","son"],["اِبْنَة","daughter"],["عَائِلَة","family"],["كَبِير","big / older"],["صَغِير","small / younger"],["طَوِيل","tall"],["قَصِير","short"]],"sample_ar":"هَذِهِ أُخْتِي. اِسْمُهَا لَيْلَى.","sample_en":"This is my sister. Her name is Layla.","product":"identify and describe close family members","tags":["family","people","descriptions"],"title_ar":"العائلة والناس","id":"A0-U6","level":"A0","number":6},{"title":"Food, Drinks, Fruits and Vegetables","subtitle":"Everyday foods and simple likes","grammar":"أريد / أحب with nouns","vocab":[["مَاء","water"],["شَاي","tea"],["قَهْوَة","coffee"],["خُبْز","bread"],["أَرُزّ","rice"],["تُفَّاح","apple"],["مَوْز","banana"],["بُرْتُقَال","orange"],["طَمَاطِم","tomato"],["خِيَار","cucumber"],["بَطَاطِس","potato"],["حَلِيب","milk"]],"sample_ar":"أُرِيدُ مَاءً وَتُفَّاحَةً.","sample_en":"I want water and an apple.","product":"name common food and drink and express a simple preference","tags":["food","drinks","fruits","vegetables"],"title_ar":"الطعام والشراب والفواكه والخضروات","id":"A0-U7","level":"A0","number":7},{"title":"Home, Rooms and Building Types","subtitle":"Rooms, furniture and common buildings","grammar":"في / على / أمام and location","vocab":[["بَيْت","house"],["شَقَّة","apartment"],["غُرْفَة","room"],["مَطْبَخ","kitchen"],["حَمَّام","bathroom"],["سَرِير","bed"],["طَاوِلَة","table"],["مَدْرَسَة","school"],["مُسْتَشْفَى","hospital"],["فُنْدُق","hotel"],["مَكْتَب","office"],["مَتْجَر","shop"]],"sample_ar":"الْمَطْبَخُ فِي الْبَيْتِ.","sample_en":"The kitchen is in the house.","product":"name rooms, furniture and basic building types","tags":["home","rooms","buildings","location"],"title_ar":"البيت والغرف وأنواع المباني","id":"A0-U8","level":"A0","number":8},{"title":"Daily Activities, Time and Places","subtitle":"A simple day: wake, work, study, eat, sleep","grammar":"basic present tense with أنا","vocab":[["أَسْتَيْقِظ","wake up"],["أَذْهَب","go"],["أَدْرُس","study"],["أَعْمَل","work"],["آكُل","eat"],["أَشْرَب","drink"],["أَرْجِع","return"],["أَنَام","sleep"],["صَبَاح","morning"],["مَسَاء","evening"],["سَاعَة","hour / clock"],["الْيَوْم","today"]],"sample_ar":"أَسْتَيْقِظُ صَبَاحًا وَأَذْهَبُ إِلَى الْعَمَلِ.","sample_en":"I wake up in the morning and go to work.","product":"describe a very simple daily routine","tags":["daily activities","time","places"],"title_ar":"الأنشطة اليومية والوقت والأماكن","id":"A0-U9","level":"A0","number":9},{"title":"Animals, Plants and Nature","subtitle":"Common animals, plants, weather words and A0 consolidation","grammar":"simple يوجد / لا يوجد and adjective review","vocab":[["قِطّ","cat"],["كَلْب","dog"],["طَائِر","bird"],["سَمَكَة","fish"],["حِصَان","horse"],["شَجَرَة","tree"],["زَهْرَة","flower"],["عُشْب","grass"],["شَمْس","sun"],["مَطَر","rain"],["بَحْر","sea"],["جَبَل","mountain"]],"sample_ar":"فِي الْحَدِيقَةِ شَجَرَةٌ وَزَهْرَةٌ وَطَائِرٌ.","sample_en":"In the garden there is a tree, a flower and a bird.","product":"talk simply about animals and the natural world","tags":["animals","plants","nature","weather"],"title_ar":"الحيوانات والنباتات والطبيعة","id":"A0-U10","level":"A0","number":10},{"title":"My Day and Time","subtitle":"Routines, clock time, days and frequency","grammar":"present tense and time expressions","vocab":[["يَوْم","day"],["أُسْبُوع","week"],["السَّاعَة","time / hour"],["الآن","now"],["دَائِمًا","always"],["أَحْيَانًا","sometimes"],["أَسْتَيْقِظ","wake up"],["أَذْهَب","go"],["أَبْدَأ","start"],["أَنْتَهِي","finish"],["أَسْتَرِيح","rest"],["أَنَام","sleep"]],"sample_ar":"أبدأ عملي الساعة الثامنة وأنتهي الساعة الخامسة.","sample_en":"I start work at eight and finish at five.","product":"describe a normal day with times and frequency","tags":["daily activities","time","routine"],"title_ar":"يومي والوقت","id":"A1-U1","level":"A1","number":1},{"title":"Home and Neighborhood","subtitle":"Rooms, furniture, nearby services and building types","grammar":"there is/are يوجد and prepositions","vocab":[["شقة","apartment"],["فيلا","villa"],["عمارة","apartment building"],["منزل","home"],["غرفة","room"],["شرفة","balcony"],["مصعد","elevator"],["موقف","parking"],["حي","neighborhood"],["مسجد","mosque"],["سوبرماركت","supermarket"],["حديقة","park"]],"sample_ar":"أسكن في شقة قريبة من الحديقة والسوبرماركت.","sample_en":"I live in an apartment near the park and supermarket.","product":"describe your home and what is around it","tags":["home","buildings","neighborhood"],"title_ar":"البيت والحي","id":"A1-U2","level":"A1","number":2},{"title":"Food and Eating Out","subtitle":"Meals, menus, ordering and simple restaurant language","grammar":"أريد / أفضّل and polite requests","vocab":[["فطور","breakfast"],["غداء","lunch"],["عشاء","dinner"],["مطعم","restaurant"],["قائمة","menu"],["حساء","soup"],["سلطة","salad"],["دجاج","chicken"],["سمك","fish"],["عصير","juice"],["ماء","water"],["فاتورة","bill"]],"sample_ar":"أريد سلطة ودجاجًا، ومن فضلك كوب ماء.","sample_en":"I would like a salad and chicken, and a glass of water please.","product":"order a simple meal and ask for the bill","tags":["food","drinks","restaurants"],"title_ar":"الطعام وتناول الوجبات خارج المنزل","id":"A1-U3","level":"A1","number":3},{"title":"Shopping, Clothes and Colors","subtitle":"Sizes, prices, clothes, colours and basic shopping","grammar":"هذا / هذه / هؤلاء and adjective agreement","vocab":[["قميص","shirt"],["بنطال","trousers"],["فستان","dress"],["حذاء","shoe"],["مقاس","size"],["سعر","price"],["رخيص","cheap"],["غالي","expensive"],["أحمر","red"],["أزرق","blue"],["أخضر","green"],["أسود","black"]],"sample_ar":"أريد هذا القميص الأزرق. كم سعره؟","sample_en":"I want this blue shirt. How much is it?","product":"ask about price, colour and size in a shop","tags":["shopping","clothes","colors"],"title_ar":"التسوق والملابس والألوان","id":"A1-U4","level":"A1","number":4},{"title":"Family, Friends and Descriptions","subtitle":"Appearance, personality and relationships","grammar":"adjective agreement and possessives","vocab":[["صديق","friend"],["زميل","colleague"],["زوج","husband"],["زوجة","wife"],["طفل","child"],["لطيف","kind"],["هادئ","calm"],["نشيط","active"],["طويل","tall"],["قصير","short"],["شعر","hair"],["عين","eye"]],"sample_ar":"صديقي هادئ ولطيف، وله شعر أسود.","sample_en":"My friend is calm and kind, and he has black hair.","product":"describe a person simply and respectfully","tags":["people","descriptions","relationships"],"title_ar":"العائلة والأصدقاء والوصف","id":"A1-U5","level":"A1","number":5},{"title":"City Places and Directions","subtitle":"Streets, landmarks and getting around","grammar":"imperatives and location phrases","vocab":[["شارع","street"],["طريق","road"],["إشارة","traffic light"],["دوار","roundabout"],["جسر","bridge"],["محطة","station"],["مطار","airport"],["بنك","bank"],["صيدلية","pharmacy"],["يمين","right"],["يسار","left"],["مستقيم","straight"]],"sample_ar":"اذهب مستقيمًا ثم انعطف يمينًا عند الإشارة.","sample_en":"Go straight, then turn right at the traffic light.","product":"ask for and understand basic directions","tags":["locations","directions","city"],"title_ar":"أماكن المدينة والاتجاهات","id":"A1-U6","level":"A1","number":6},{"title":"Transport and Travel Basics","subtitle":"Cars, buses, taxis, tickets and simple journeys","grammar":"إلى / من / بـ and future with سأ","vocab":[["سيارة","car"],["حافلة","bus"],["سيارة أجرة","taxi"],["قطار","train"],["طائرة","plane"],["تذكرة","ticket"],["رحلة","trip"],["محطة","station"],["مطار","airport"],["وصول","arrival"],["مغادرة","departure"],["حقيبة","bag"]],"sample_ar":"سأذهب إلى المطار بسيارة أجرة.","sample_en":"I will go to the airport by taxi.","product":"talk about a simple journey and buy a ticket","tags":["transport","travel","airport"],"title_ar":"المواصلات وأساسيات السفر","id":"A1-U7","level":"A1","number":7},{"title":"Work, Study and Technology","subtitle":"Jobs, classrooms, offices and everyday devices","grammar":"present tense plural and purpose expressions","vocab":[["عمل","work"],["وظيفة","job"],["مدرسة","school"],["جامعة","university"],["مكتب","office"],["حاسوب","computer"],["هاتف","phone"],["بريد إلكتروني","email"],["اجتماع","meeting"],["درس","lesson"],["واجب","homework"],["مشروع","project"]],"sample_ar":"أستخدم الحاسوب في العمل وأرسل بريدًا إلكترونيًا.","sample_en":"I use the computer at work and send an email.","product":"describe basic work or study activities","tags":["work","study","technology"],"title_ar":"العمل والدراسة والتقنية","id":"A1-U8","level":"A1","number":8},{"title":"Health, Body and Pharmacy","subtitle":"Body parts, simple symptoms and asking for help","grammar":"عندي / أشعر بـ and simple advice","vocab":[["رأس","head"],["عين","eye"],["يد","hand"],["قدم","foot"],["معدة","stomach"],["ألم","pain"],["حمى","fever"],["دواء","medicine"],["طبيب","doctor"],["صيدلية","pharmacy"],["متعب","tired"],["أفضل","better"]],"sample_ar":"عندي ألم في الرأس وأحتاج إلى دواء.","sample_en":"I have a headache and need medicine.","product":"describe a simple symptom and ask for basic help","tags":["health","body","pharmacy"],"title_ar":"الصحة والجسم والصيدلية","id":"A1-U9","level":"A1","number":9},{"title":"Weather, Seasons and Outdoors","subtitle":"Weather, clothing choices, animals and outdoor activities","grammar":"weather expressions and because لأن","vocab":[["طقس","weather"],["صيف","summer"],["شتاء","winter"],["ربيع","spring"],["خريف","autumn"],["حار","hot"],["بارد","cold"],["ممطر","rainy"],["مشمس","sunny"],["حديقة","park"],["شاطئ","beach"],["طائر","bird"]],"sample_ar":"الجو مشمس اليوم، لذلك سأذهب إلى الحديقة.","sample_en":"The weather is sunny today, so I will go to the park.","product":"describe weather and choose a simple outdoor activity","tags":["weather","seasons","outdoors","animals"],"title_ar":"الطقس والفصول والأنشطة الخارجية","id":"A1-U10","level":"A1","number":10},{"title":"Housing and Services","subtitle":"Renting, maintenance, utilities and residential buildings","grammar":"relative clauses with الذي / التي and requests","vocab":[["إيجار","rent"],["عقد","contract"],["مالك","owner"],["مستأجر","tenant"],["صيانة","maintenance"],["كهرباء","electricity"],["ماء","water"],["تكييف","air conditioning"],["مصعد","elevator"],["مبنى","building"],["برج","tower"],["مجمع سكني","residential complex"]],"sample_ar":"أبحث عن شقة في مبنى فيه مصعد وموقف للسيارة.","sample_en":"I am looking for an apartment in a building with an elevator and parking.","product":"discuss basic housing needs and report a maintenance issue","tags":["housing","buildings","services"],"title_ar":"السكن والخدمات","id":"A2-U1","level":"A2","number":1},{"title":"Travel, Hotels and Airports","subtitle":"Bookings, check-in, luggage and travel problems","grammar":"past tense and sequencing","vocab":[["حجز","booking"],["جواز سفر","passport"],["تأشيرة","visa"],["استقبال","reception"],["غرفة مفردة","single room"],["غرفة مزدوجة","double room"],["أمتعة","luggage"],["بوابة","gate"],["تأخير","delay"],["إلغاء","cancellation"],["رحلة","flight"],["إقامة","stay"]],"sample_ar":"حجزت غرفة لثلاث ليالٍ، لكن الرحلة تأخرت.","sample_en":"I booked a room for three nights, but the flight was delayed.","product":"manage a hotel stay and explain a simple travel problem","tags":["travel","hotels","airports"],"title_ar":"السفر والفنادق والمطارات","id":"A2-U2","level":"A2","number":2},{"title":"Workplaces and Professions","subtitle":"Jobs, duties, schedules and workplace communication","grammar":"كان / أصبح and duty expressions","vocab":[["مهندس","engineer"],["طبيب","doctor"],["معلم","teacher"],["محاسب","accountant"],["مدير","manager"],["موظف","employee"],["شركة","company"],["مصنع","factory"],["مستشفى","hospital"],["دوام","work shift"],["مهمة","task"],["خبرة","experience"]],"sample_ar":"أعمل مهندسًا في شركة، ومسؤوليتي متابعة المشاريع.","sample_en":"I work as an engineer in a company, and my responsibility is to follow projects.","product":"describe a job, workplace and responsibilities","tags":["work","professions","workplaces"],"title_ar":"أماكن العمل والمهن","id":"A2-U3","level":"A2","number":3},{"title":"Education and Learning","subtitle":"Courses, exams, skills and study strategies","grammar":"comparatives and purpose","vocab":[["دورة","course"],["اختبار","test"],["درجة","grade"],["مهارة","skill"],["مادة","subject"],["مكتبة","library"],["محاضرة","lecture"],["ملاحظة","note"],["مراجعة","review"],["نجاح","success"],["صعب","difficult"],["سهل","easy"]],"sample_ar":"هذه المادة أصعب من غيرها، لذلك أراجعها كل يوم.","sample_en":"This subject is harder than the others, so I review it every day.","product":"talk about study progress and learning strategies","tags":["education","skills","study"],"title_ar":"التعليم والتعلّم","id":"A2-U4","level":"A2","number":4},{"title":"Food Culture and Cooking","subtitle":"Ingredients, quantities, cooking methods and meals","grammar":"imperatives and quantities","vocab":[["مكوّن","ingredient"],["وصفة","recipe"],["ملعقة","spoon"],["كوب","cup"],["كيلو","kilo"],["يقطع","cut"],["يطبخ","cook"],["يخبز","bake"],["يقلي","fry"],["خضار","vegetables"],["فاكهة","fruit"],["بهارات","spices"]],"sample_ar":"اقطع الخضار ثم أضف قليلًا من الزيت والبهارات.","sample_en":"Cut the vegetables, then add a little oil and spices.","product":"understand and explain a simple recipe","tags":["food","cooking","vegetables","fruits"],"title_ar":"ثقافة الطعام والطبخ","id":"A2-U5","level":"A2","number":5},{"title":"Health, Fitness and Lifestyle","subtitle":"Habits, exercise, appointments and wellbeing","grammar":"should ينبغي / يجب and frequency","vocab":[["صحة","health"],["رياضة","exercise"],["مشي","walking"],["نوم","sleep"],["موعد","appointment"],["فحص","check-up"],["تغذية","nutrition"],["عادة","habit"],["ضغط","pressure"],["وزن","weight"],["نشاط","activity"],["راحة","rest"]],"sample_ar":"يجب أن أنام جيدًا وأمارس الرياضة بانتظام.","sample_en":"I should sleep well and exercise regularly.","product":"describe healthy habits and arrange an appointment","tags":["health","fitness","lifestyle"],"title_ar":"الصحة واللياقة ونمط الحياة","id":"A2-U6","level":"A2","number":6},{"title":"Environment, Plants and Agriculture","subtitle":"Plants, farms, water and simple environmental issues","grammar":"cause and result لأن / لذلك","vocab":[["نبات","plant"],["شجرة","tree"],["زهرة","flower"],["مزرعة","farm"],["تربة","soil"],["ماء","water"],["ري","irrigation"],["محصول","crop"],["قمح","wheat"],["نخلة","palm tree"],["تلوث","pollution"],["إعادة التدوير","recycling"]],"sample_ar":"تحتاج النباتات إلى الماء والضوء، لذلك يجب الحفاظ على المياه.","sample_en":"Plants need water and light, so we should conserve water.","product":"describe plants, farming and a simple environmental problem","tags":["plants","agriculture","environment"],"title_ar":"البيئة والنباتات والزراعة","id":"A2-U7","level":"A2","number":7},{"title":"Shopping, Money and Banking","subtitle":"Prices, payments, accounts and everyday money","grammar":"numbers, quantities and conditionals إذا","vocab":[["نقد","cash"],["بطاقة","card"],["حساب","account"],["بنك","bank"],["صراف آلي","ATM"],["تحويل","transfer"],["فاتورة","bill"],["خصم","discount"],["سعر","price"],["ميزانية","budget"],["إيصال","receipt"],["عملة","currency"]],"sample_ar":"إذا كان السعر مناسبًا فسأدفع بالبطاقة.","sample_en":"If the price is suitable, I will pay by card.","product":"handle common shopping and banking situations","tags":["money","banking","shopping"],"title_ar":"التسوق والمال والخدمات المصرفية","id":"A2-U8","level":"A2","number":8},{"title":"Events, Invitations and Social Life","subtitle":"Invitations, celebrations, plans and polite responses","grammar":"future, invitations and polite refusal","vocab":[["دعوة","invitation"],["حفلة","party"],["مناسبة","occasion"],["زفاف","wedding"],["عيد","holiday / festival"],["ضيف","guest"],["موعد","appointment"],["خطة","plan"],["أوافق","agree"],["أعتذر","apologise / decline"],["مبكر","early"],["متأخر","late"]],"sample_ar":"شكرًا على الدعوة، سأحضر في الساعة السابعة.","sample_en":"Thank you for the invitation; I will attend at seven.","product":"invite someone, accept or decline politely, and make plans","tags":["events","social life","plans"],"title_ar":"المناسبات والدعوات والحياة الاجتماعية","id":"A2-U9","level":"A2","number":9},{"title":"News, Media and Everyday Problems","subtitle":"Simple news, complaints, lost items and service problems","grammar":"reported information and past events","vocab":[["خبر","news"],["صحيفة","newspaper"],["موقع","website"],["تقرير","report"],["مشكلة","problem"],["شكوى","complaint"],["مفقود","lost"],["خدمة","service"],["اتصال","call"],["حادث","incident"],["إصلاح","repair"],["مساعدة","help"]],"sample_ar":"قرأت خبرًا عن إغلاق الطريق بسبب حادث.","sample_en":"I read news about the road being closed because of an incident.","product":"understand short news and explain an everyday problem","tags":["news","media","problems","services"],"title_ar":"الأخبار والإعلام والمشكلات اليومية","id":"A2-U10","level":"A2","number":10},{"title":"Personal Stories and Past Events","subtitle":"Narratives, memories, experiences and sequence","grammar":"past tense, كان, عندما and sequencing","vocab":[["تجربة","experience"],["ذكرى","memory"],["رحلة","journey"],["حدث","event"],["قرار","decision"],["موقف","situation"],["بداية","beginning"],["نهاية","end"],["فجأة","suddenly"],["بعد ذلك","after that"],["قبل","before"],["أثناء","during"]],"sample_ar":"عندما انتقلت إلى مدينة جديدة، واجهت صعوبات في البداية ثم تأقلمت تدريجيًا.","sample_en":"When I moved to a new city, I faced difficulties at first and then gradually adapted.","product":"tell a clear personal story with sequence and detail","tags":["narrative","past","experiences"],"title_ar":"القصص الشخصية والأحداث الماضية","id":"B1-U1","level":"B1","number":1},{"title":"Cities, Architecture and Public Spaces","subtitle":"Building types, urban features and describing places","grammar":"relative clauses and descriptive comparison","vocab":[["عمارة","architecture"],["مبنى","building"],["برج","tower"],["فيلا","villa"],["متحف","museum"],["مكتبة عامة","public library"],["ساحة","public square"],["رصيف","sidewalk"],["واجهة","facade"],["حي","neighborhood"],["تراثي","heritage-style"],["حديث","modern"]],"sample_ar":"يجمع وسط المدينة بين مبانٍ حديثة ومناطق عامة واسعة للمشاة.","sample_en":"The city centre combines modern buildings with wide public areas for pedestrians.","product":"describe and compare buildings, neighborhoods and public spaces","tags":["cities","architecture","buildings"],"title_ar":"المدن والعمارة والمساحات العامة","id":"B1-U2","level":"B1","number":2},{"title":"Work, Careers and Meetings","subtitle":"Responsibilities, careers, meetings and workplace problems","grammar":"modal expressions and formal requests","vocab":[["مسؤولية","responsibility"],["خبرة","experience"],["مهارة","skill"],["ترقية","promotion"],["مقابلة","interview"],["اجتماع","meeting"],["جدول أعمال","agenda"],["موعد نهائي","deadline"],["فريق","team"],["عميل","client"],["اقتراح","proposal"],["حل","solution"]],"sample_ar":"ناقش الفريق الاقتراح واتفق على خطة لإنجاز المشروع قبل الموعد النهائي.","sample_en":"The team discussed the proposal and agreed on a plan to finish the project before the deadline.","product":"participate in a simple professional meeting and discuss responsibilities","tags":["work","career","meetings"],"title_ar":"العمل والمسار المهني والاجتماعات","id":"B1-U3","level":"B1","number":3},{"title":"Education and Skills","subtitle":"Learning goals, qualifications and independent study","grammar":"verbal nouns and expressing goals","vocab":[["تعليم","education"],["تدريب","training"],["شهادة","certificate"],["مؤهل","qualification"],["بحث","research"],["مصدر","source"],["مهارة","skill"],["تقييم","assessment"],["تطوير","development"],["هدف","goal"],["تقدّم","progress"],["استراتيجية","strategy"]],"sample_ar":"وضعت خطة لتطوير مهاراتي في القراءة والكتابة خلال هذا العام.","sample_en":"I made a plan to develop my reading and writing skills this year.","product":"explain learning goals, methods and progress","tags":["education","skills","goals"],"title_ar":"التعليم والمهارات","id":"B1-U4","level":"B1","number":4},{"title":"Health and Wellbeing","subtitle":"Symptoms, healthcare, habits and wellbeing","grammar":"advice, cause/effect and conditional language","vocab":[["صحة","health"],["تغذية","nutrition"],["نوم","sleep"],["توتر","stress"],["تمرين","exercise"],["فحص","examination"],["تشخيص","diagnosis"],["علاج","treatment"],["موعد","appointment"],["تأمين","insurance"],["وقاية","prevention"],["تعافٍ","recovery"]],"sample_ar":"يساعد النوم الكافي والتغذية المتوازنة على تحسين الصحة وتقليل التوتر.","sample_en":"Enough sleep and balanced nutrition help improve health and reduce stress.","product":"discuss health habits and communicate with healthcare services","tags":["health","wellbeing","services"],"title_ar":"الصحة والعافية","id":"B1-U5","level":"B1","number":5},{"title":"Environment and Sustainability","subtitle":"Waste, water, energy and local environmental action","grammar":"passive voice introduction and cause/effect","vocab":[["استدامة","sustainability"],["نفايات","waste"],["تدوير","recycling"],["طاقة","energy"],["مياه","water"],["استهلاك","consumption"],["تلوث","pollution"],["انبعاثات","emissions"],["حماية","protection"],["موارد","resources"],["حملة","campaign"],["حل","solution"]],"sample_ar":"يمكن تقليل استهلاك المياه والطاقة من خلال تغييرات بسيطة في السلوك اليومي.","sample_en":"Water and energy consumption can be reduced through simple changes in daily behaviour.","product":"explain an environmental problem and suggest practical solutions","tags":["environment","sustainability","resources"],"title_ar":"البيئة والاستدامة","id":"B1-U6","level":"B1","number":6},{"title":"Travel and Cultural Exchange","subtitle":"Longer trips, cultural expectations and travel experiences","grammar":"comparison, contrast and narrative","vocab":[["ثقافة","culture"],["عادة","custom"],["تقاليد","traditions"],["زائر","visitor"],["إقامة","stay"],["دليل","guide"],["معلم","landmark"],["تجربة","experience"],["احترام","respect"],["اختلاف","difference"],["تشابه","similarity"],["تواصل","communication"]],"sample_ar":"تختلف بعض العادات من بلد إلى آخر، ولذلك من المهم أن يسأل الزائر باحترام.","sample_en":"Some customs differ from one country to another, so it is important for a visitor to ask respectfully.","product":"compare travel experiences and discuss cultural expectations","tags":["travel","culture","communication"],"title_ar":"السفر والتبادل الثقافي","id":"B1-U7","level":"B1","number":7},{"title":"Technology and Digital Life","subtitle":"Apps, privacy, devices and digital habits","grammar":"relative clauses and expressing advantages/disadvantages","vocab":[["تطبيق","app"],["حساب","account"],["كلمة مرور","password"],["خصوصية","privacy"],["بيانات","data"],["شبكة","network"],["تحميل","download"],["تحديث","update"],["رسالة","message"],["منصة","platform"],["أمان","security"],["استخدام","use"]],"sample_ar":"توفر التطبيقات خدمات مفيدة، لكن حماية البيانات وكلمات المرور ضرورية.","sample_en":"Apps provide useful services, but protecting data and passwords is essential.","product":"discuss technology use, benefits and basic digital safety","tags":["technology","digital life","privacy"],"title_ar":"التقنية والحياة الرقمية","id":"B1-U8","level":"B1","number":8},{"title":"Society, Community and Services","subtitle":"Community needs, public services and volunteering","grammar":"expressing need, obligation and purpose","vocab":[["مجتمع","community"],["خدمة","service"],["بلدية","municipality"],["مركز","centre"],["متطوع","volunteer"],["مبادرة","initiative"],["مشكلة","problem"],["احتياج","need"],["دعم","support"],["مشاركة","participation"],["حي","neighborhood"],["سكان","residents"]],"sample_ar":"نظمت مجموعة من السكان مبادرة تطوعية لتحسين الحديقة العامة.","sample_en":"A group of residents organised a volunteer initiative to improve the public park.","product":"describe a community need and propose a local initiative","tags":["society","community","public services"],"title_ar":"المجتمع والخدمات","id":"B1-U9","level":"B1","number":9},{"title":"Media, Opinions and Integrated Project","subtitle":"Short articles, viewpoints, evidence and B1 synthesis","grammar":"opinion markers and linking ideas","vocab":[["رأي","opinion"],["وجهة نظر","viewpoint"],["دليل","evidence"],["مقال","article"],["عنوان","headline"],["مصدر","source"],["حقيقة","fact"],["تعليق","comment"],["أتفق","agree"],["أختلف","disagree"],["سبب","reason"],["نتيجة","result"]],"sample_ar":"في رأيي، يجب مقارنة أكثر من مصدر قبل تكوين موقف من خبر مهم.","sample_en":"In my opinion, more than one source should be compared before forming a view on important news.","product":"state and support an opinion in speech and writing","tags":["media","opinions","critical reading"],"title_ar":"الإعلام والآراء والمشروع المتكامل","id":"B1-U10","level":"B1","number":10},{"title":"Professional Communication","subtitle":"Formal email, meetings, negotiation and workplace register","grammar":"formal connectors, passive structures and hedging","vocab":[["مراسلات","correspondence"],["طلب","request"],["تأكيد","confirmation"],["تفاوض","negotiation"],["اتفاق","agreement"],["بند","clause / item"],["محضر","minutes"],["إجراء","procedure"],["مسؤولية","responsibility"],["توصية","recommendation"],["موعد نهائي","deadline"],["متابعة","follow-up"]],"sample_ar":"نرجو تأكيد استلام المستندات وإفادتنا بأي ملاحظات قبل نهاية الأسبوع.","sample_en":"Please confirm receipt of the documents and advise us of any comments before the end of the week.","product":"write and speak in a clear professional register","tags":["professional","email","meetings"],"title_ar":"التواصل المهني","id":"B2-U1","level":"B2","number":1},{"title":"Business and Economics","subtitle":"Markets, companies, costs, revenue and trends","grammar":"percentages, trend language and nominal style","vocab":[["اقتصاد","economy"],["سوق","market"],["شركة","company"],["إيرادات","revenue"],["تكلفة","cost"],["ربح","profit"],["خسارة","loss"],["استثمار","investment"],["طلب","demand"],["عرض","supply"],["نمو","growth"],["انخفاض","decline"]],"sample_ar":"ارتفعت الإيرادات خلال الربع الأخير، بينما انخفضت تكاليف التشغيل بنسبة ملحوظة.","sample_en":"Revenue increased during the last quarter, while operating costs fell noticeably.","product":"describe business performance and economic trends","tags":["business","economics","finance"],"title_ar":"الأعمال والاقتصاد","id":"B2-U2","level":"B2","number":2},{"title":"Urban Development and Housing","subtitle":"Planning, land use, infrastructure and housing choices","grammar":"complex comparison and cause/effect","vocab":[["تخطيط","planning"],["تطوير","development"],["بنية تحتية","infrastructure"],["إسكان","housing"],["كثافة","density"],["استخدامات الأراضي","land use"],["مشروع","project"],["منطقة","area"],["مواصلات","transport"],["مرافق","facilities"],["استدامة","sustainability"],["تصميم","design"]],"sample_ar":"يتطلب التطوير الحضري الناجح توازنًا بين الإسكان والنقل والمساحات العامة.","sample_en":"Successful urban development requires a balance between housing, transport and public space.","product":"discuss housing and urban-development options with reasons","tags":["urban planning","housing","architecture"],"title_ar":"التطوير الحضري والإسكان","id":"B2-U3","level":"B2","number":3},{"title":"Science and Technology","subtitle":"Innovation, research, data and technical explanations","grammar":"passive voice and explaining processes","vocab":[["بحث","research"],["تجربة","experiment"],["بيانات","data"],["نتيجة","result"],["تقنية","technology"],["ابتكار","innovation"],["نظام","system"],["خوارزمية","algorithm"],["جهاز","device"],["تحليل","analysis"],["دقة","accuracy"],["تطبيق","application"]],"sample_ar":"تُحلل البيانات باستخدام نظام آلي ثم تُراجع النتائج للتحقق من دقتها.","sample_en":"The data are analysed using an automated system and the results are then reviewed for accuracy.","product":"explain a technical process and discuss an innovation","tags":["science","technology","research"],"title_ar":"العلوم والتقنية","id":"B2-U4","level":"B2","number":4},{"title":"Health Systems and Public Health","subtitle":"Healthcare access, prevention, systems and public information","grammar":"formal cause/effect and recommendations","vocab":[["رعاية صحية","healthcare"],["وقاية","prevention"],["تطعيم","vaccination"],["عيادة","clinic"],["مستشفى","hospital"],["تأمين","insurance"],["مريض","patient"],["خدمة","service"],["تشخيص","diagnosis"],["علاج","treatment"],["صحة عامة","public health"],["توعية","awareness"]],"sample_ar":"تسهم برامج الوقاية والتوعية في تقليل الضغط على خدمات الرعاية الصحية.","sample_en":"Prevention and awareness programmes help reduce pressure on healthcare services.","product":"discuss healthcare systems and make public-health recommendations","tags":["health","public health","systems"],"title_ar":"النظم الصحية والصحة العامة","id":"B2-U5","level":"B2","number":5},{"title":"Environment and Climate","subtitle":"Climate, energy, water, biodiversity and policy choices","grammar":"conditionals, probability and formal argument","vocab":[["مناخ","climate"],["احتباس حراري","global warming"],["طاقة متجددة","renewable energy"],["مياه جوفية","groundwater"],["تنوع حيوي","biodiversity"],["تصحر","desertification"],["انبعاثات","emissions"],["سياسة","policy"],["حماية","conservation"],["موارد","resources"],["زراعة","agriculture"],["تكيف","adaptation"]],"sample_ar":"إذا استمرت درجات الحرارة في الارتفاع، فستزداد الحاجة إلى سياسات فعالة للتكيف وإدارة المياه.","sample_en":"If temperatures continue to rise, effective adaptation and water-management policies will become increasingly necessary.","product":"evaluate environmental problems and policy responses","tags":["environment","climate","water","agriculture"],"title_ar":"البيئة والمناخ","id":"B2-U6","level":"B2","number":6},{"title":"Law, Rights and Public Services","subtitle":"Rules, rights, obligations and interacting with institutions","grammar":"legal-style modals and passive forms","vocab":[["قانون","law"],["حق","right"],["واجب","duty"],["لائحة","regulation"],["طلب","request"],["ترخيص","licence"],["مخالفة","violation"],["شكوى","complaint"],["إجراء","procedure"],["جهة","authority"],["وثيقة","document"],["موعد","appointment"]],"sample_ar":"يحق للمستخدم تقديم شكوى رسمية إذا لم تُقدَّم الخدمة وفق الإجراءات المعلنة.","sample_en":"A user has the right to file a formal complaint if the service is not provided according to the published procedures.","product":"understand and discuss common legal and public-service information","tags":["law","rights","public services"],"title_ar":"القانون والحقوق والخدمات العامة","id":"B2-U7","level":"B2","number":7},{"title":"Media, Advertising and Information","subtitle":"News framing, advertising, claims and source evaluation","grammar":"reported speech and stance markers","vocab":[["إعلان","advertisement"],["حملة","campaign"],["جمهور","audience"],["رسالة","message"],["ادعاء","claim"],["مصدر","source"],["تحقق","verification"],["معلومة","information"],["تحيز","bias"],["محتوى","content"],["عنوان","headline"],["تأثير","influence"]],"sample_ar":"يجب التحقق من مصدر الادعاء قبل مشاركته، خصوصًا عندما يكون العنوان مثيرًا.","sample_en":"The source of a claim should be verified before it is shared, especially when the headline is sensational.","product":"analyse media claims and explain persuasive techniques","tags":["media","advertising","information literacy"],"title_ar":"الإعلام والإعلان والمعلومات","id":"B2-U8","level":"B2","number":8},{"title":"Culture, Arts and Contemporary Literature","subtitle":"Contemporary arts, books, film and cultural discussion","grammar":"evaluation language and nuanced description","vocab":[["ثقافة","culture"],["فن","art"],["رواية","novel"],["قصة","story"],["فيلم","film"],["مسرح","theatre"],["معرض","exhibition"],["كاتب","writer"],["فنان","artist"],["موضوع","theme"],["أسلوب","style"],["جمهور","audience"]],"sample_ar":"يعالج العمل موضوع الهوية بأسلوب بسيط، لكنه يفتح مساحة واسعة للنقاش.","sample_en":"The work addresses identity in a simple style, but opens a wide space for discussion.","product":"discuss contemporary cultural works without deep heritage analysis","tags":["culture","arts","literature"],"title_ar":"الثقافة والفنون والأدب المعاصر","id":"B2-U9","level":"B2","number":9},{"title":"Debate, Research and Formal Presentation","subtitle":"Evidence, counterarguments, sources and B2 synthesis","grammar":"advanced connectors and structured argument","vocab":[["حجة","argument"],["دليل","evidence"],["مصدر","source"],["فرضية","hypothesis"],["اعتراض","objection"],["رد","response"],["استنتاج","conclusion"],["عرض","presentation"],["مقدمة","introduction"],["محور","section / axis"],["بيانات","data"],["مرجع","reference"]],"sample_ar":"سأعرض أولًا الأدلة المؤيدة، ثم أناقش الاعتراضات قبل الوصول إلى الاستنتاج.","sample_en":"I will first present the supporting evidence, then discuss objections before reaching the conclusion.","product":"deliver a structured presentation and respond to questions","tags":["debate","research","presentation"],"title_ar":"المناظرة والبحث والعرض الرسمي","id":"B2-U10","level":"B2","number":10},{"title":"Academic Reading and Argument","subtitle":"Dense texts, claims, evidence and synthesis","grammar":"complex nominalisation and academic connectors","vocab":[["أطروحة","thesis"],["افتراض","assumption"],["منهج","methodology"],["استدلال","reasoning"],["برهان","evidence / proof"],["سياق","context"],["إطار","framework"],["تحليل","analysis"],["مقارنة","comparison"],["استنتاج","conclusion"],["اتساق","coherence"],["مصطلح","term"]],"sample_ar":"تقوم الحجة على افتراضين رئيسيين، غير أن الأدلة المقدمة لا تكفي لإثبات العلاقة السببية.","sample_en":"The argument rests on two main assumptions, yet the evidence presented is insufficient to establish causation.","product":"analyse, challenge and synthesise academic arguments","tags":["academic","argument","critical reading"],"title_ar":"القراءة الأكاديمية والحجاج","id":"C1-U1","level":"C1","number":1},{"title":"Advanced Professional Arabic","subtitle":"Reports, negotiation, risk and executive communication","grammar":"formal register, hedging and concise nominal style","vocab":[["تنفيذ","implementation"],["مخاطر","risks"],["أولوية","priority"],["مؤشر","indicator"],["ميزانية","budget"],["مورد","resource"],["اعتماد","approval"],["امتثال","compliance"],["تقييم","evaluation"],["توصية","recommendation"],["تفاوض","negotiation"],["مخرجات","deliverables"]],"sample_ar":"نوصي بإعادة ترتيب الأولويات للحد من المخاطر التشغيلية وضمان الالتزام بالجدول والميزانية.","sample_en":"We recommend reprioritising to reduce operational risks and ensure adherence to the schedule and budget.","product":"produce concise reports and participate in advanced professional discussion","tags":["professional","reports","management"],"title_ar":"العربية المهنية المتقدمة","id":"C1-U2","level":"C1","number":2},{"title":"Economics and Policy","subtitle":"Indicators, public policy, trade-offs and economic argument","grammar":"abstract cause/effect and conditional analysis","vocab":[["سياسة عامة","public policy"],["تضخم","inflation"],["بطالة","unemployment"],["إنتاجية","productivity"],["إنفاق","spending"],["إيرادات","revenues"],["ضريبة","tax"],["دعم","subsidy"],["استثمار","investment"],["تجارة","trade"],["مؤشر","indicator"],["تفاوت","inequality"]],"sample_ar":"قد يخفف الدعم العبء على الأسر في المدى القصير، لكنه قد يفرض تكلفة مالية كبيرة على الموازنة.","sample_en":"Subsidies may ease the burden on households in the short term, but may impose a significant fiscal cost on the budget.","product":"evaluate policy trade-offs using economic language","tags":["economics","policy","public finance"],"title_ar":"الاقتصاد والسياسات","id":"C1-U3","level":"C1","number":3},{"title":"Architecture, Cities and Infrastructure","subtitle":"Design, mobility, utilities and urban systems","grammar":"technical description and multi-clause comparison","vocab":[["بنية تحتية","infrastructure"],["شبكة طرق","road network"],["نقل عام","public transport"],["صرف صحي","sewerage"],["واجهة","facade"],["كثافة عمرانية","urban density"],["استعمال مختلط","mixed use"],["مخطط رئيسي","master plan"],["ممر مشاة","pedestrian corridor"],["مرفق","facility"],["صيانة","maintenance"],["مرونة","resilience"]],"sample_ar":"يربط المخطط بين مناطق الاستخدام المختلط وشبكة النقل العام بهدف تقليل الاعتماد على المركبات الخاصة.","sample_en":"The plan connects mixed-use areas with the public transport network in order to reduce reliance on private vehicles.","product":"explain and evaluate urban and infrastructure proposals","tags":["architecture","cities","infrastructure"],"title_ar":"العمارة والمدن والبنية التحتية","id":"C1-U4","level":"C1","number":4},{"title":"Science, Innovation and Ethics","subtitle":"Research design, emerging technology and ethical questions","grammar":"qualification, uncertainty and evidence","vocab":[["ابتكار","innovation"],["أخلاقيات","ethics"],["تجربة","experiment"],["عينة","sample"],["متغير","variable"],["دقة","accuracy"],["موثوقية","reliability"],["خصوصية","privacy"],["موافقة","consent"],["خطر","risk"],["فائدة","benefit"],["تطبيق","application"]],"sample_ar":"لا تكفي الكفاءة التقنية وحدها لتبرير التطبيق؛ إذ يجب أيضًا تقييم المخاطر المتعلقة بالخصوصية والموافقة.","sample_en":"Technical efficiency alone is not enough to justify implementation; risks related to privacy and consent must also be assessed.","product":"discuss scientific evidence and ethical implications with nuance","tags":["science","innovation","ethics"],"title_ar":"العلوم والابتكار والأخلاقيات","id":"C1-U5","level":"C1","number":5},{"title":"Environment, Agriculture and Resources","subtitle":"Food systems, water, land and sustainable resource management","grammar":"systems language and advanced cause/effect","vocab":[["أمن غذائي","food security"],["موارد مائية","water resources"],["مياه جوفية","groundwater"],["ملوحة","salinity"],["تربة","soil"],["محاصيل","crops"],["ري","irrigation"],["كفاءة","efficiency"],["سلسلة إمداد","supply chain"],["تصحر","desertification"],["تنوع حيوي","biodiversity"],["إدارة","management"]],"sample_ar":"يتطلب تحسين الأمن الغذائي إدارة أكثر كفاءة للمياه والتربة وسلاسل الإمداد، لا مجرد زيادة الإنتاج.","sample_en":"Improving food security requires more efficient management of water, soil and supply chains, not merely increased production.","product":"analyse resource and agricultural systems","tags":["environment","agriculture","resources","plants"],"title_ar":"البيئة والزراعة والموارد","id":"C1-U6","level":"C1","number":6},{"title":"Health, Medicine and Society","subtitle":"Evidence, systems, access and health communication","grammar":"technical register and cautious claims","vocab":[["وبائيات","epidemiology"],["تشخيص","diagnosis"],["فعالية","effectiveness"],["أثر جانبي","side effect"],["عامل خطر","risk factor"],["رعاية أولية","primary care"],["صحة نفسية","mental health"],["وصول","access"],["تفاوت","disparity"],["دليل سريري","clinical evidence"],["توعية","awareness"],["سياسة صحية","health policy"]],"sample_ar":"تشير البيانات إلى تحسن في الوصول إلى الرعاية الأولية، مع بقاء تفاوت واضح بين بعض الفئات.","sample_en":"The data indicate improved access to primary care, while a clear disparity remains among some groups.","product":"interpret health evidence and discuss system-level issues","tags":["health","medicine","society"],"title_ar":"الصحة والطب والمجتمع","id":"C1-U7","level":"C1","number":7},{"title":"Media, Rhetoric and Critical Literacy","subtitle":"Framing, rhetoric, discourse and source criticism","grammar":"stance, implication and rhetorical structure","vocab":[["خطاب","discourse"],["بلاغة","rhetoric"],["إطار","framing"],["افتراض ضمني","implicit assumption"],["مصداقية","credibility"],["تحيز","bias"],["استقطاب","polarisation"],["جمهور","audience"],["سردية","narrative"],["سياق","context"],["اقتباس","quotation"],["تضليل","misinformation"]],"sample_ar":"تتغير دلالة الرسالة حين يُنتزع الاقتباس من سياقه ويُعاد توظيفه لخدمة سردية مختلفة.","sample_en":"The meaning of a message changes when a quotation is removed from its context and repurposed to serve a different narrative.","product":"analyse rhetoric, framing and information quality","tags":["media","rhetoric","critical literacy"],"title_ar":"الإعلام والبلاغة والقراءة النقدية","id":"C1-U8","level":"C1","number":8},{"title":"Culture, Identity and Contemporary Thought","subtitle":"Identity, social change and contemporary cultural discussion","grammar":"abstract evaluation and nuanced contrast","vocab":[["هوية","identity"],["انتماء","belonging"],["تحول","social change / transformation"],["ذاكرة","memory"],["مجتمع","community"],["لغة","language"],["ثقافة","culture"],["تمثيل","representation"],["تنوع","diversity"],["جيل","generation"],["تجربة","experience"],["منظور","perspective"]],"sample_ar":"تتشكل الهوية من تفاعل اللغة والذاكرة والتجربة الاجتماعية، ولا يمكن اختزالها في عامل واحد.","sample_en":"Identity is shaped by the interaction of language, memory and social experience and cannot be reduced to a single factor.","product":"discuss identity and contemporary cultural questions with nuance","tags":["culture","identity","society"],"title_ar":"الثقافة والهوية والفكر المعاصر","id":"C1-U9","level":"C1","number":9},{"title":"Research, Reports and Presentations","subtitle":"Synthesis, formal reports, data commentary and C1 capstone","grammar":"academic cohesion and high-register presentation","vocab":[["ملخص تنفيذي","executive summary"],["منهجية","methodology"],["نتائج","findings"],["مناقشة","discussion"],["قيود","limitations"],["توصيات","recommendations"],["ملحق","appendix"],["جدول","table"],["رسم بياني","chart"],["مرجع","reference"],["اقتباس","citation"],["عرض","presentation"]],"sample_ar":"توضح النتائج اتجاهًا عامًا، لكن القيود المنهجية تستدعي الحذر عند تعميم الاستنتاجات.","sample_en":"The findings show a general trend, but methodological limitations require caution when generalising the conclusions.","product":"produce a coherent research-style report and formal presentation","tags":["research","reports","presentation"],"title_ar":"البحث والتقارير والعروض","id":"C1-U10","level":"C1","number":10},{"title":"Precision and Register","subtitle":"Fine distinctions, formal/informal register and stylistic control","grammar":"register shifts, collocation and lexical precision","vocab":[["دقة","precision"],["سياق","context"],["سجل لغوي","register"],["صياغة","wording"],["دلالة","connotation"],["إيحاء","implication"],["مصطلح","term"],["تعبير","expression"],["ملاءمة","appropriacy"],["اقتصاد لغوي","linguistic economy"],["إطناب","verbosity"],["اتساق","consistency"]],"sample_ar":"لا يكفي أن تكون العبارة صحيحة نحويًا؛ فقد تكون غير ملائمة للسياق أو أقل دقة من بديل أكثر تخصصًا.","sample_en":"A sentence being grammatically correct is not enough; it may be contextually inappropriate or less precise than a more specialised alternative.","product":"choose language with near-expert precision across registers","tags":["precision","register","style"],"title_ar":"الدقة والسجل اللغوي","id":"C2-U1","level":"C2","number":1},{"title":"Complex Argumentation","subtitle":"Multi-layered claims, rebuttal, inference and synthesis","grammar":"concession, rebuttal and dense logical relations","vocab":[["مقدمة","premise / introduction"],["نتيجة","conclusion"],["استلزام","implication"],["تناقض","contradiction"],["تفنيد","refutation"],["اعتراض","objection"],["استثناء","exception"],["تعميم","generalisation"],["استقراء","induction"],["استنباط","deduction"],["ترجيح","weighing"],["تماسك","coherence"]],"sample_ar":"حتى لو سلّمنا بصحة المقدمة، فإن النتيجة لا تلزم عنها بالضرورة ما لم يُبرهن على العلاقة الوسيطة.","sample_en":"Even if we accept the premise, the conclusion does not necessarily follow unless the intermediate relationship is demonstrated.","product":"construct and dismantle complex arguments precisely","tags":["argumentation","logic","synthesis"],"title_ar":"الحجاج المعقّد","id":"C2-U2","level":"C2","number":2},{"title":"Policy, Diplomacy and Institutions","subtitle":"Institutional language, negotiation and policy positioning","grammar":"high-formality modality and diplomatic hedging","vocab":[["مؤسسة","institution"],["مذكرة","memorandum"],["تفويض","mandate"],["مشاورات","consultations"],["توافق","consensus"],["موقف","position"],["تنسيق","coordination"],["التزام","commitment"],["إطار عمل","framework"],["تنفيذ","implementation"],["تقييم","evaluation"],["أصحاب المصلحة","stakeholders"]],"sample_ar":"ترى الجهة أن أي تعديل ينبغي أن يسبقه تشاور موسع يضمن اتساق المقترح مع الإطار المؤسسي القائم.","sample_en":"The authority considers that any amendment should be preceded by broad consultation ensuring the proposal aligns with the existing institutional framework.","product":"understand and produce high-level institutional and diplomatic language","tags":["policy","institutions","diplomacy"],"title_ar":"السياسات والدبلوماسية والمؤسسات","id":"C2-U3","level":"C2","number":3},{"title":"Advanced Economics and Business","subtitle":"Strategy, finance, risk and complex market analysis","grammar":"dense nominal style and advanced trend comparison","vocab":[["سيولة","liquidity"],["رأس مال","capital"],["عائد","return"],["مخاطر","risk"],["حوكمة","governance"],["اندماج","merger"],["استحواذ","acquisition"],["أصول","assets"],["التزامات","liabilities"],["سلسلة قيمة","value chain"],["ميزة تنافسية","competitive advantage"],["تقلب","volatility"]],"sample_ar":"تعتمد جدوى الاستحواذ على قدرة الشركة على تحقيق تكامل تشغيلي دون زيادة مستوى المخاطر المالية بصورة غير مقبولة.","sample_en":"The viability of the acquisition depends on the company’s ability to achieve operational integration without increasing financial risk to an unacceptable level.","product":"analyse complex business and financial scenarios","tags":["business","economics","finance"],"title_ar":"الاقتصاد والأعمال المتقدمة","id":"C2-U4","level":"C2","number":4},{"title":"Science and Technical Communication","subtitle":"Specialised explanation, uncertainty and interdisciplinary synthesis","grammar":"technical compression, definition and qualification","vocab":[["نموذج","model"],["معايرة","calibration"],["محاكاة","simulation"],["منهجية","methodology"],["تكرار","replication"],["قابلية التعميم","generalisability"],["خطأ منهجي","systematic error"],["هامش خطأ","margin of error"],["افتراض","assumption"],["متغير","variable"],["علاقة سببية","causal relation"],["تنبؤ","prediction"]],"sample_ar":"تظل القدرة التنبؤية للنموذج محدودة ما دامت بيانات المعايرة لا تمثل كامل التباين الموجود في المجتمع المدروس.","sample_en":"The model’s predictive capacity remains limited as long as the calibration data do not represent the full variation in the population under study.","product":"communicate specialised scientific content with precision","tags":["science","technical communication","research"],"title_ar":"التواصل العلمي والتقني","id":"C2-U5","level":"C2","number":5},{"title":"Law, Ethics and Public Discourse","subtitle":"Competing rights, legal reasoning and ethical framing","grammar":"legal argument, qualification and interpretive language","vocab":[["مشروعية","legitimacy / legality"],["مسؤولية","liability / responsibility"],["مبدأ","principle"],["استثناء","exception"],["تفسير","interpretation"],["سابقة","precedent"],["تناسب","proportionality"],["مصلحة عامة","public interest"],["حق","right"],["التزام","obligation"],["مساءلة","accountability"],["نزاهة","integrity"]],"sample_ar":"يتطلب تقييم مشروعية الإجراء موازنة مبدأ التناسب مع المصلحة العامة والحقوق الفردية المتأثرة.","sample_en":"Assessing the legitimacy of the measure requires balancing proportionality, the public interest and the individual rights affected.","product":"analyse legal and ethical positions without oversimplification","tags":["law","ethics","public discourse"],"title_ar":"القانون والأخلاق والخطاب العام","id":"C2-U6","level":"C2","number":6},{"title":"Environment and Systems Thinking","subtitle":"Interdependent systems, uncertainty and long-term resource strategy","grammar":"systems causality and scenario language","vocab":[["نظام بيئي","ecosystem"],["حلقة تغذية راجعة","feedback loop"],["قدرة تحمل","carrying capacity"],["مرونة","resilience"],["سيناريو","scenario"],["ندرة","scarcity"],["تخصيص","allocation"],["مقايضة","trade-off"],["مخزون","stock"],["تدفق","flow"],["اعتماد متبادل","interdependence"],["استشراف","foresight"]],"sample_ar":"قد يؤدي تحسين كفاءة مورد واحد إلى آثار غير متوقعة في أجزاء أخرى من النظام إذا أُهملت علاقات الاعتماد المتبادل.","sample_en":"Improving the efficiency of one resource may have unexpected effects elsewhere in the system if interdependencies are ignored.","product":"reason about complex environmental and resource systems","tags":["environment","systems","resources"],"title_ar":"البيئة والتفكير النظمي","id":"C2-U7","level":"C2","number":7},{"title":"Media, Style and Persuasion","subtitle":"Subtle persuasion, voice, framing and stylistic transformation","grammar":"rhetorical choice, tone and syntactic variation","vocab":[["نبرة","tone"],["إيقاع","rhythm"],["توكيد","emphasis"],["مفارقة","irony"],["تلميح","allusion"],["تأطير","framing"],["إقناع","persuasion"],["استمالة","appeal"],["إيجاز","conciseness"],["تكرار","repetition"],["مجاز","figurative expression"],["صوت الكاتب","authorial voice"]],"sample_ar":"يمكن تغيير أثر النص جذريًا من دون تغيير مضمونه الأساسي، وذلك عبر تعديل النبرة وترتيب المعلومات ودرجة التوكيد.","sample_en":"A text’s effect can be changed radically without altering its core content by adjusting tone, information order and emphasis.","product":"analyse and deliberately reshape style and persuasion","tags":["media","style","persuasion"],"title_ar":"الإعلام والأسلوب والإقناع","id":"C2-U8","level":"C2","number":8},{"title":"Cross-domain Synthesis","subtitle":"Integrating evidence from economics, science, society and policy","grammar":"high-density cohesion and interdisciplinary synthesis","vocab":[["تكامل","integration"],["منظور","perspective"],["دليل","evidence"],["تعارض","conflict"],["اتساق","consistency"],["أولوية","priority"],["أثر","impact"],["قيد","constraint"],["بديل","alternative"],["معيار","criterion"],["مقارنة","comparison"],["استنتاج","conclusion"]],"sample_ar":"لا يمكن تقييم البديل على أساس التكلفة وحدها؛ إذ ينبغي دمج الأثر الاجتماعي والبيئي وقابلية التنفيذ في معيار المقارنة.","sample_en":"The alternative cannot be assessed on cost alone; social and environmental impact and feasibility must be integrated into the comparison criteria.","product":"synthesise complex evidence across multiple domains","tags":["synthesis","evidence","interdisciplinary"],"title_ar":"التوليف بين المجالات","id":"C2-U9","level":"C2","number":9},{"title":"Mastery Portfolio","subtitle":"Extended speaking, writing, editing and C2 performance portfolio","grammar":"full-spectrum control and self-editing","vocab":[["مسودة","draft"],["مراجعة","revision"],["تحرير","editing"],["دقة","precision"],["ترابط","cohesion"],["حجة","argument"],["ملخص","summary"],["عرض","presentation"],["نقاش","discussion"],["تقييم ذاتي","self-assessment"],["أداء","performance"],["ملف إنجاز","portfolio"]],"sample_ar":"أراجع النص على مستويات متعددة: الحجة أولًا، ثم البنية والترابط، وأخيرًا الدقة الأسلوبية واللغوية.","sample_en":"I review a text at multiple levels: first the argument, then structure and cohesion, and finally stylistic and linguistic precision.","product":"demonstrate sustained, flexible and self-edited high-level Arabic performance","tags":["portfolio","mastery","editing"],"title_ar":"ملف الإتقان النهائي","id":"C2-U10","level":"C2","number":10}];
+  const SPECIAL_A0_U1 = [{"id":"A0-U1-L1","title":"Welcome to Arabic","subtitle":"Right to left, what a letter is, and your first Arabic word","goal":"Understand how Arabic writing is organised and read the greeting مرحبًا as a whole phrase.","art":"← العربية →","learn":{"intro_ar":"مَرْحَبًا","intro_aid":"Marḥaban means “Hello / Welcome.” You do not need to analyse every letter yet. First, meet Arabic as a complete written and spoken language.","points_ar":["العربية تُكتب من اليمين إلى اليسار.","الحروف العربية قد يتغيّر شكلها قليلًا عندما تتصل.","نبدأ بالصوت والمعنى، ثم نبني القراءة خطوة خطوة."],"points_aid":["Arabic is written from right to left.","Many Arabic letters connect, so their shape can change slightly inside a word.","We will learn sound + meaning first, then build accurate reading gradually."],"flow":[["Situation","You see Arabic for the first time."],["How it works","Arabic moves right → left."],["What you can say","مَرْحَبًا"],["Use it","Recognise and say the greeting."]]},"understand":{"what":"Arabic is an alphabetic writing system. Letters represent consonants and long vowels; short vowels can be shown with small marks.","why":"A zero-beginner should learn direction and sound habits before memorising a long alphabet list. This prevents letter-name memorisation without reading ability.","how":"Start at the right edge of an Arabic word and move left. Do not reverse the individual letters; the whole writing direction changes.","examples":[["مَرْحَبًا","hello / welcome"],["العربية","Arabic"]],"note":"At this stage, treat مَرْحَبًا as a useful whole phrase. Detailed letter analysis comes in the next lessons.","what_aid":"Arabic is an alphabetic writing system. Letters represent consonants and long vowels; short vowels can be shown with small marks.","why_aid":"A zero-beginner should learn direction and sound habits before memorising a long alphabet list. This prevents letter-name memorisation without reading ability.","how_aid":"Start at the right edge of an Arabic word and move left. Do not reverse the individual letters; the whole writing direction changes.","note_aid":"At this stage, treat مَرْحَبًا as a useful whole phrase. Detailed letter analysis comes in the next lessons.","what_ar":"العربية نظام كتابة أبجدي. تمثل الحروف أصواتًا أساسية، ويمكن إظهار الحركات القصيرة بعلامات صغيرة.","why_ar":"يحتاج المبتدئ من الصفر إلى تعلّم اتجاه الكتابة وعادات الاستماع قبل حفظ قائمة طويلة من الحروف.","how_ar":"ابدأ من الطرف الأيمن للكلمة العربية وتحرك نحو اليسار. لا تعكس شكل الحروف نفسها؛ الذي يتغير هو اتجاه القراءة.","note_ar":"في هذه المرحلة تعامل مع «مَرْحَبًا» بوصفها تحية مفيدة كاملة. سنحلّل الحروف بالتدريج."},"practice":[{"q":"Which direction does normal Arabic writing move?","opts":["Left to right","Right to left","Top to bottom"],"a":1},{"q":"Which item is Arabic script?","opts":["HELLO","مَرْحَبًا","ABC"],"a":1},{"q":"What does مَرْحَبًا mean here?","opts":["Goodbye","Hello / Welcome","Thank you"],"a":1},{"q":"True or false: Arabic letters can look slightly different when they connect.","opts":["True","False"],"a":0},{"q":"A good first reading habit is to…","opts":["memorise 100 words immediately","start from the right and follow the word leftward","write English from right to left"],"a":1}],"use":{"speak_ar":"مَرْحَبًا","speak_aid":"Say marḥaban slowly, then naturally. Focus on hearing and reproducing the whole word, not spelling it from memory yet.","write":"On paper, draw an arrow showing the direction Arabic text moves. Then copy مَرْحَبًا once while looking at the model.","write_aid":"On paper, draw an arrow showing the direction Arabic text moves. Then copy مَرْحَبًا once while looking at the model.","write_ar":"اكتب أو انسخ النموذج المطلوب في هذا الدرس، ثم حاول مرة ثانية من الذاكرة عندما تكون مستعدًا."},"review":["Arabic text normally begins from the right.","مَرْحَبًا is a greeting.","Connected Arabic letters may change shape."],"title_ar":"مرحبًا بالعربية","goal_ar":"افهم اتجاه الكتابة العربية وتعرّف إلى التحية «مَرْحَبًا» بوصفها كلمة كاملة.","regional_ar":"طبّق كلمات هذا الدرس في {city} أو في أي مكان تعيش فيه، مع الحفاظ على العربية الفصحى.","regional_aid":"Apply this lesson in {city} or wherever you live; keep the language in Modern Standard Arabic."},{"id":"A0-U1-L2","title":"Your First Four Letters","subtitle":"ا ب ت ث — recognise shape families before memorising names","goal":"Recognise ا ب ت ث and distinguish them visually.","art":"ا  ب  ت  ث","learn":{"intro_ar":"ا   ب   ت   ث","intro_aid":"These four letters introduce a useful idea: Arabic letters often belong to visual families. ب ت ث share the same basic body; the dots tell you which letter you are seeing.","points_ar":["ا — ألف","ب — باء","ت — تاء","ث — ثاء"],"points_aid":["ا = alif","ب = bāʾ, roughly b","ت = tāʾ, roughly t","ث = thāʾ, like th in “think”"],"flow":[["See","Notice the body of the letter."],["Compare","Count and locate the dots."],["Hear","Connect shape to sound."],["Recall","Identify without English."]]},"understand":{"what":"ب ت ث are a shape family. Their main body is similar, but the dot pattern changes.","why":"Learning families reduces visual overload. Instead of treating 28 letters as 28 unrelated drawings, you recognise patterns.","how":"ب has one dot below. ت has two dots above. ث has three dots above. ا is a simple vertical stroke and behaves differently.","examples":[["ب","b sound"],["ت","t sound"],["ث","th sound as in think"],["ا","alif; often supports a long ā sound"]],"note":"We are not yet teaching every connected form. First make the isolated shapes automatic.","what_aid":"ب ت ث are a shape family. Their main body is similar, but the dot pattern changes.","why_aid":"Learning families reduces visual overload. Instead of treating 28 letters as 28 unrelated drawings, you recognise patterns.","how_aid":"ب has one dot below. ت has two dots above. ث has three dots above. ا is a simple vertical stroke and behaves differently.","note_aid":"We are not yet teaching every connected form. First make the isolated shapes automatic.","what_ar":"الحروف ا ب ت ث تعطيك أول عائلة بصرية واضحة. ب وت وث تتشابه في الجسم وتختلف في عدد النقاط ومكانها.","why_ar":"تعلم الحروف في عائلات بصرية يقلل الحمل على الذاكرة ويساعدك على قراءة الأشكال بدل حفظها عشوائيًا.","how_ar":"انظر أولًا إلى شكل الحرف، ثم إلى النقاط، ثم استمع إلى اسم الحرف وصوته. اضغط كل بطاقة صوتية منفصلة.","note_ar":"اسم الحرف ليس دائمًا هو الصوت الذي تسمعه داخل الكلمة. سنتعلم الاثنين بشكل منفصل."},"practice":[{"q":"Which letter has one dot below?","opts":["ب","ت","ث"],"a":0},{"q":"Which letter has two dots above?","opts":["ث","ت","ب"],"a":1},{"q":"Which letter has three dots above?","opts":["ب","ا","ث"],"a":2},{"q":"Which letter is the simple vertical form in this set?","opts":["ا","ب","ت"],"a":0},{"q":"Which letter is closest to English “t”?","opts":["ب","ت","ث"],"a":1},{"q":"Which letter can represent a “th” sound like “think”?","opts":["ث","ت","ب"],"a":0}],"use":{"speak_ar":"بَ — تَ — ثَ","speak_aid":"Say the three sounds slowly. The final one uses the tongue near/between the teeth, like English th in “think”.","write":"Copy ا ب ت ث in a row three times. Keep the dots clear and separate.","write_aid":"Copy ا ب ت ث in a row three times. Keep the dots clear and separate.","write_ar":"اكتب أو انسخ النموذج المطلوب في هذا الدرس، ثم حاول مرة ثانية من الذاكرة عندما تكون مستعدًا."},"review":["ب = one dot below.","ت = two dots above.","ث = three dots above.","ا has no dots."],"title_ar":"أول أربعة حروف","goal_ar":"تعرّف إلى ا ب ت ث وميّز بينها بصريًا وصوتيًا.","regional_ar":"طبّق كلمات هذا الدرس في {city} أو في أي مكان تعيش فيه، مع الحفاظ على العربية الفصحى.","regional_aid":"Apply this lesson in {city} or wherever you live; keep the language in Modern Standard Arabic."},{"id":"A0-U1-L3","title":"A New Sound Family","subtitle":"ج ح خ د ذ — throat sounds and non-connecting letters","goal":"Recognise ج ح خ د ذ and hear the difference between ح and خ.","art":"ج  ح  خ   د  ذ","learn":{"intro_ar":"ج   ح   خ   د   ذ","intro_aid":"Arabic contains sounds that English may not use in the same way. Do not replace them immediately with the nearest English sound; train your ear first.","points_ar":["ج — جيم","ح — حاء","خ — خاء","د — دال","ذ — ذال"],"points_aid":["ج = jīm; pronunciation varies regionally, but Standard Arabic teaching commonly uses a j-like sound.","ح = ḥāʾ, a clear breathy throat sound.","خ = khāʾ, a rougher sound from the back of the mouth/throat.","د = dāl, d.","ذ = dhāl, like th in “this”."],"flow":[["See","ج ح خ share a body."],["Hear","ح and خ are not the same."],["Notice","د and ذ do not join to the next letter on the left."],["Use","Identify by shape + sound."]]},"understand":{"what":"ج ح خ form another visual family. د ذ form a second small family.","why":"Arabic reading becomes easier when you recognise both shape families and joining behaviour.","how":"ج has a dot below, ح has no dot, خ has a dot above. د has no dot; ذ has one dot above. د and ذ are “non-joiners” on their left side.","examples":[["ج","jīm"],["ح","ḥāʾ"],["خ","khāʾ"],["د","dāl"],["ذ","dhāl"]],"note":"“Non-joiner” does not mean the letter never connects. It means it does not connect forward to the following letter on its left.","what_aid":"ج ح خ form another visual family. د ذ form a second small family.","why_aid":"Arabic reading becomes easier when you recognise both shape families and joining behaviour.","how_aid":"ج has a dot below, ح has no dot, خ has a dot above. د has no dot; ذ has one dot above. د and ذ are “non-joiners” on their left side.","note_aid":"“Non-joiner” does not mean the letter never connects. It means it does not connect forward to the following letter on its left.","what_ar":"هذه المجموعة تقدم أشكالًا جديدة وأصواتًا لا توجد كلها بالطريقة نفسها في الإنجليزية.","why_ar":"التمييز المبكر بين ح وخ يمنع عادة نطقية خاطئة يصعب تصحيحها لاحقًا.","how_ar":"استمع إلى كل حرف منفردًا، ثم قارن ح وخ. ركز على مكان خروج الهواء وجودة الصوت بدل الاعتماد على تهجئة إنجليزية.","note_ar":"لا نحاول إعطاء قياس مخبري للصوت؛ الهدف هو نطق واضح ومفهوم وقابل للتحسن."},"practice":[{"q":"Which letter has a dot below in the ج ح خ family?","opts":["ج","ح","خ"],"a":0},{"q":"Which has no dot?","opts":["خ","ح","ج"],"a":1},{"q":"Which has one dot above?","opts":["خ","ج","ح"],"a":0},{"q":"Which pair are non-joiners to the following letter?","opts":["د ذ","ج ح","ب ت"],"a":0},{"q":"Which letter is like th in “this”?","opts":["ذ","د","ح"],"a":0},{"q":"Which sound is rougher and farther back than ح?","opts":["خ","ج","د"],"a":0}],"use":{"speak_ar":"حَ — خَ — دَ — ذَ","speak_aid":"Contrast حَ and خَ. Avoid turning both into ordinary English h. Accuracy will improve over time; the goal now is to hear that they are different.","write":"Copy ج ح خ as a family, then د ذ. Mark the dots carefully.","write_aid":"Copy ج ح خ as a family, then د ذ. Mark the dots carefully.","write_ar":"اكتب أو انسخ النموذج المطلوب في هذا الدرس، ثم حاول مرة ثانية من الذاكرة عندما تكون مستعدًا."},"review":["ج ح خ share a basic shape.","د and ذ do not join to the next letter on the left.","ح and خ are distinct sounds."],"title_ar":"عائلة صوتية جديدة","goal_ar":"تعرّف إلى ج ح خ د ذ واسمع الفرق بين ح وخ.","regional_ar":"طبّق كلمات هذا الدرس في {city} أو في أي مكان تعيش فيه، مع الحفاظ على العربية الفصحى.","regional_aid":"Apply this lesson in {city} or wherever you live; keep the language in Modern Standard Arabic."},{"id":"A0-U1-L4","title":"More Letters, Better Reading","subtitle":"ر ز س ش — curves, dots and another non-joiner pair","goal":"Recognise ر ز س ش and combine them with earlier letters in simple visual decoding.","art":"ر  ز   س  ش","learn":{"intro_ar":"ر   ز   س   ش","intro_aid":"You are building a reading system, not just memorising letter names. Today, notice another pair and another shape family.","points_ar":["ر — راء","ز — زاي","س — سين","ش — شين"],"points_aid":["ر = rāʾ, an r sound; exact pronunciation is trained later.","ز = zāy, z.","س = sīn, s.","ش = shīn, sh."],"flow":[["Compare","ر / ز differ by a dot."],["Compare","س / ش differ by three dots."],["Connect","Mix with letters you already know."],["Read","Move right → left."]]},"understand":{"what":"ر ز are a pair; س ش are a pair. The dot pattern changes the identity of the letter.","why":"Arabic readers rely on the whole shape plus dots. Ignoring dots can completely change a word.","how":"ر has no dot; ز has one dot above. س has no dots; ش has three dots above. ر and ز are also non-joiners to the next letter on the left.","examples":[["ر","r"],["ز","z"],["س","s"],["ش","sh"]],"note":"At first, accuracy matters more than speed. Point to each letter and name or sound it correctly.","what_aid":"ر ز are a pair; س ش are a pair. The dot pattern changes the identity of the letter.","why_aid":"Arabic readers rely on the whole shape plus dots. Ignoring dots can completely change a word.","how_aid":"ر has no dot; ز has one dot above. س has no dots; ش has three dots above. ر and ز are also non-joiners to the next letter on the left.","note_aid":"At first, accuracy matters more than speed. Point to each letter and name or sound it correctly.","what_ar":"ر وز وس وش توسع قدرتك على تمييز الأشكال وتقدم لك فروقًا مهمة في النقاط والاتصال.","why_ar":"كلما تعلمت الحروف ضمن مجموعات صغيرة مع أمثلة، أصبحت قراءة الكلمات أقل اعتمادًا على الحفظ.","how_ar":"قارن ر بز، وس بش، ثم جرّب التعرف السريع على الحرف قبل سماع اسمه.","note_ar":"بعض الحروف لا تتصل بما بعدها من جهة اليسار، وسنراجع قاعدة الاتصال تدريجيًا."},"practice":[{"q":"Which letter has one dot above?","opts":["ر","ز","س"],"a":1},{"q":"Which letter has three dots above?","opts":["ش","س","ز"],"a":0},{"q":"Which letter gives an s sound?","opts":["ش","س","ر"],"a":1},{"q":"Which gives an sh sound?","opts":["ز","ش","س"],"a":1},{"q":"Which pair are non-joiners to the following letter?","opts":["ر ز","س ش","ب ت"],"a":0},{"q":"You should read an Arabic sequence starting from the…","opts":["left","right","middle"],"a":1}],"use":{"speak_ar":"سَ — شَ — زَ — رَ","speak_aid":"Keep س /s/ and ش /sh/ clearly different. For ر, a perfect rolled/tapped r is not required yet; build it gradually.","write":"Write ر ز on one line and س ش on another. Circle the dots that distinguish each pair.","write_aid":"Write ر ز on one line and س ش on another. Circle the dots that distinguish each pair.","write_ar":"اكتب أو انسخ النموذج المطلوب في هذا الدرس، ثم حاول مرة ثانية من الذاكرة عندما تكون مستعدًا."},"review":["ر / ز differ by one dot.","س / ش differ by three dots.","ر and ز are non-joiners."],"title_ar":"حروف أكثر وقراءة أفضل","goal_ar":"تعرّف إلى ر ز س ش واربطها بالحروف السابقة في قراءة بصرية بسيطة.","regional_ar":"طبّق كلمات هذا الدرس في {city} أو في أي مكان تعيش فيه، مع الحفاظ على العربية الفصحى.","regional_aid":"Apply this lesson in {city} or wherever you live; keep the language in Modern Standard Arabic."},{"id":"A0-U1-L5","title":"First Reading Lab","subtitle":"Review, short vowels and your first controlled decoding","goal":"Use َ ِ ُ with familiar letters and decode short syllables from right to left.","art":"بَ  بِ  بُ","learn":{"intro_ar":"بَ   بِ   بُ","intro_aid":"Arabic short vowels can be shown with small marks. Beginner texts often use them more heavily; everyday adult texts often omit many of them because readers infer the vowels from vocabulary and grammar.","points_ar":["َ  فَتْحَة","ِ  كَسْرَة","ُ  ضَمَّة"],"points_aid":["َ fatḥa = a short a-like vowel","ِ kasra = a short i-like vowel","ُ ḍamma = a short u-like vowel"],"flow":[["Letter","Recognise ب"],["Vowel mark","Notice َ ِ ُ"],["Sound","Say ba / bi / bu"],["Decode","Combine without English letters."]]},"understand":{"what":"Fatḥa, kasra and ḍamma are short-vowel marks placed around a consonant letter.","why":"They help beginners pronounce unfamiliar words accurately. Later you will learn to read many words without every vowel mark being written.","how":"Fatḥa sits above and gives a short a-like sound. Kasra sits below and gives i. Ḍamma sits above and gives u.","examples":[["بَ","ba"],["بِ","bi"],["بُ","bu"],["تَ","ta"],["سِ","si"],["شُ","shu"]],"note":"English spellings like “ba” are temporary learning aids. Your long-term goal is to see بَ and hear /ba/ directly.","what_aid":"Fatḥa, kasra and ḍamma are short-vowel marks placed around a consonant letter.","why_aid":"They help beginners pronounce unfamiliar words accurately. Later you will learn to read many words without every vowel mark being written.","how_aid":"Fatḥa sits above and gives a short a-like sound. Kasra sits below and gives i. Ḍamma sits above and gives u.","note_aid":"English spellings like “ba” are temporary learning aids. Your long-term goal is to see بَ and hear /ba/ directly.","what_ar":"الفتحة والكسرة والضمة علامات قصيرة تساعد المبتدئ على معرفة الحركة الصوتية للحرف.","why_ar":"قراءة المقاطع القصيرة تبني الرابط المباشر بين شكل الحرف والصوت، بدل الاعتماد الدائم على النقل بالحروف الإنجليزية.","how_ar":"ابدأ بحرف واحد مع حركة واحدة، مثل بَ، ثم انتقل إلى بِ وبُ. استمع وكرر ولا تسرع.","note_ar":"هدفك الطويل هو أن ترى «بَ» وتسمع /ba/ مباشرة من دون المرور بكتابة إنجليزية وسيطة."},"practice":[{"q":"Which mark represents a short i-like vowel?","opts":["َ","ِ","ُ"],"a":1},{"q":"How should بَ be read?","opts":["ba","bi","bu"],"a":0},{"q":"How should تِ be read?","opts":["ta","ti","tu"],"a":1},{"q":"How should شُ be read?","opts":["sha","shi","shu"],"a":2},{"q":"Beginner Arabic texts often show more vowel marks because…","opts":["Arabic has no consonants","the marks support accurate pronunciation","they change the writing direction"],"a":1},{"q":"Your long-term goal is to…","opts":["depend forever on English transliteration","connect Arabic script directly to sound and meaning","avoid reading without vowel marks"],"a":1},{"q":"Which sequence is read from the right?","opts":["Arabic script","English script","both always"],"a":0}],"use":{"speak_ar":"بَ بِ بُ — تَ تِ تُ — سَ سِ سُ","speak_aid":"Read each three-part group slowly, then repeat with less hesitation. Do not rush.","write":"Copy three syllables: بَ  تِ  شُ. Then cover the model and try once from memory.","write_aid":"Copy three syllables: بَ  تِ  شُ. Then cover the model and try once from memory.","write_ar":"اكتب أو انسخ النموذج المطلوب في هذا الدرس، ثم حاول مرة ثانية من الذاكرة عندما تكون مستعدًا."},"review":["َ = short a-like vowel.","ِ = short i-like vowel.","ُ = short u-like vowel.","English transliteration is temporary support, not the final reading method."],"title_ar":"مختبر القراءة الأول","goal_ar":"استخدم الفتحة والكسرة والضمة مع حروف مألوفة واقرأ مقاطع قصيرة من اليمين إلى اليسار.","regional_ar":"طبّق كلمات هذا الدرس في {city} أو في أي مكان تعيش فيه، مع الحفاظ على العربية الفصحى.","regional_aid":"Apply this lesson in {city} or wherever you live; keep the language in Modern Standard Arabic."}];
+
+  const LEVEL_ORDER = ['A0','A1','A2','B1','B2','C1','C2'];
+  const AID_BY_LEVEL = {A0:'Full English scaffolding',A1:'Full English support',A2:'Moderate English support',B1:'Light English support',B2:'Optional English reference',C1:'Minimal English reference',C2:'Reference only'};
+
+  function pick(arr,i){ return arr[((i%arr.length)+arr.length)%arr.length]; }
+  function levelBand(level){
+    if(level==='A0') return 'absolute beginner';
+    if(level==='A1') return 'beginner';
+    if(level==='A2') return 'elementary';
+    if(level==='B1') return 'intermediate';
+    if(level==='B2') return 'upper-intermediate';
+    if(level==='C1') return 'advanced';
+    return 'proficiency';
+  }
+  function lessonTitle(unit,n){
+    const en=[
+      `Meet ${unit.title}`,
+      `Build Sentences: ${unit.grammar}`,
+      `Read & Listen: ${unit.title}`,
+      `Speak & Write: ${unit.title}`,
+      `Review & Real-world Task: ${unit.title}`
+    ][n-1];
+    const ar=[
+      `مفردات: ${unit.title_ar}`,
+      `بناء الجملة: ${unit.title_ar}`,
+      `استمع واقرأ: ${unit.title_ar}`,
+      `تحدّث واكتب: ${unit.title_ar}`,
+      `مراجعة ومهمة واقعية: ${unit.title_ar}`
+    ][n-1];
+    return {en,ar};
+  }
+  function aidIntro(unit,n){
+    const band=levelBand(unit.level);
+    const amount=AID_BY_LEVEL[unit.level];
+    return `${amount}. This ${band} lesson develops ${unit.product}. The Arabic examples stay in Modern Standard Arabic; regional context changes examples, not dialect.`;
+  }
+  function ArabicPoints(unit,n){
+    const v=unit.vocab;
+    const groups=[
+      `تعلّم الكلمات الأساسية في موضوع «${unit.title_ar}»: ${v.slice(0,4).map(x=>x[0]).join('، ')}.`,
+      `لاحظ كيف نستخدم ${unit.grammar} داخل جمل مفيدة.`,
+      `اربط المفردات بالموقف الحقيقي بدل حفظ الكلمات منفردة.`
+    ];
+    if(n===2) groups[0]=`ابنِ جملًا باستخدام مفردات الوحدة وركّز على: ${unit.grammar}.`;
+    if(n===3) groups[0]=`استمع إلى النص واقرأه أولًا للفكرة العامة، ثم ابحث عن التفاصيل.`;
+    if(n===4) groups[0]=`استخدم العربية لإنتاج كلام وكتابة مرتبطة بموقف واقعي.`;
+    if(n===5) groups[0]=`ادمج المفردات والقواعد والمهارات في مهمة مراجعة واحدة.`;
+    return groups;
+  }
+  function EnglishPoints(unit,n){
+    const v=unit.vocab;
+    const groups=[
+      `Learn core words for ${unit.title}: ${v.slice(0,4).map(x=>x[1]).join(', ')}.`,
+      `Notice how ${unit.grammar} works inside useful sentences.`,
+      `Connect words to a real situation instead of memorising an isolated list.`
+    ];
+    if(n===2) groups[0]=`Build sentences with the unit vocabulary and focus on ${unit.grammar}.`;
+    if(n===3) groups[0]=`Listen and read first for the main idea, then listen/read again for detail.`;
+    if(n===4) groups[0]=`Use the Arabic actively in a realistic speaking and writing task.`;
+    if(n===5) groups[0]=`Combine vocabulary, grammar, listening/reading and production in one review task.`;
+    return groups;
+  }
+  function readingText(unit,n){
+    const v=unit.vocab;
+    if(n===1) return unit.sample_ar;
+    if(n===2) return `${unit.sample_ar} أستخدمُ ${v[0][0]} و${v[1][0]} في جملةٍ واضحة.`;
+    if(n===3) return `${unit.sample_ar} في هذا السياق نلاحظُ أيضًا ${v[2][0]} و${v[3][0]}.`;
+    if(n===4) return `${unit.sample_ar} ثم أشرحُ الفكرةَ بكلماتي وأذكرُ مثالًا مناسبًا.`;
+    return `${unit.sample_ar} وفي المراجعة أربطُ بين ${v[0][0]} و${v[4][0]} و${v[6 % v.length][0]}.`;
+  }
+  function readingAid(unit,n){
+    if(n===1) return unit.sample_en;
+    if(n===2) return `${unit.sample_en} The lesson then uses two core words in a clear sentence.`;
+    if(n===3) return `${unit.sample_en} Listen/read again and notice two additional unit words.`;
+    if(n===4) return `${unit.sample_en} Then explain the idea in your own words and give a suitable example.`;
+    return `${unit.sample_en} The review connects several unit concepts.`;
+  }
+  function makePractice(unit,n){
+    const v=unit.vocab;
+    const a=pick(v,n-1), b=pick(v,n+1), c=pick(v,n+3), d=pick(v,n+5), e=pick(v,n+7);
+    return [
+      {q_ar:`اختر الكلمة التي تنتمي إلى موضوع «${unit.title_ar}».`,q_aid:`Choose the word that belongs to the topic “${unit.title}”.`,opts:[a[0],'موسيقى','مجرة'],a:0,hint_aid:`${a[0]} = ${a[1]}.`},
+      {q_ar:`أي كلمة من الوحدة ترتبط بالمعنى “${b[1]}”؟`,q_aid:`Which unit word matches “${b[1]}”?`,opts:[d[0],e[0],b[0]],a:2,hint_aid:`Look back at the vocabulary if needed.`},
+      {q_ar:`أي عبارة أفضل للدراسة في هذه الوحدة؟`,q_aid:`Which approach best matches this unit?`,opts:['أستخدم المفردات في جملة وموقف','أحفظ ترجمة فقط','أتجنب الاستماع والتحدث'],a:0},
+      {q_ar:`ما التركيز الأساسي في هذه الوحدة؟`,q_aid:`What is the main language focus of this unit?`,opts:[unit.grammar,'اللهجة العامية فقط','تهجئة الكلمات الإنجليزية'],a:0},
+      {q_ar:`ما الهدف العملي للدرس؟`,q_aid:`What is the practical goal of the lesson?`,opts:[unit.product,'حفظ قائمة بلا استخدام','تجنب القراءة والكتابة'],a:0}
+    ];
+  }
+  function makeLesson(unit,n){
+    const lt=lessonTitle(unit,n), v=unit.vocab;
+    const text=readingText(unit,n), aid=readingAid(unit,n);
+    const speak = n===1 ? unit.sample_ar : n===2 ? `${v[0][0]} — ${v[1][0]} — ${unit.sample_ar}` : text;
+    const speakAid = n===1 ? `Repeat the model, then replace one detail with information that is true for you.` :
+      n===2 ? `Say the key words separately, then use them inside the model sentence.` :
+      n===3 ? `Read the short text aloud once slowly and once at a natural pace.` :
+      n===4 ? `Speak for 30–60 seconds about the unit topic using at least four target words.` :
+      `Give a short integrated response using vocabulary and the unit language focus.`;
+    return {
+      id:`${unit.id}-L${n}`, level:unit.level, unitId:unit.id, unitNumber:unit.number,
+      title:lt.en, title_ar:lt.ar,
+      subtitle:unit.subtitle,
+      goal:`${unit.product.charAt(0).toUpperCase()+unit.product.slice(1)} using ${unit.grammar}.`,
+      goal_ar:`استخدم موضوع «${unit.title_ar}» لتطوير القدرة على ${unit.product} مع التركيز على ${unit.grammar}.`,
+      art:v.slice((n-1)*2,(n-1)*2+4).map(x=>x[0]).join(' · ') || v.slice(0,4).map(x=>x[0]).join(' · '),
+      topics:unit.tags,
+      learn:{
+        intro_ar:text,
+        intro_aid:aidIntro(unit,n)+' '+aid,
+        points_ar:ArabicPoints(unit,n),
+        points_aid:EnglishPoints(unit,n),
+        flow:[
+          ['الموقف / Situation',unit.title_ar],
+          ['كيف تعمل العربية / How Arabic works',unit.grammar],
+          ['ما يمكنك قوله / What you can say',unit.sample_ar],
+          ['الاستخدام / Use it',unit.product]
         ]
       },
-      {
-        "id": "A0-U1-L2",
-        "title": "Your First Four Letters",
-        "subtitle": "ا ب ت ث — recognise shape families before memorising names",
-        "goal": "Recognise ا ب ت ث and distinguish them visually.",
-        "art": "ا  ب  ت  ث",
-        "learn": {
-          "intro_ar": "ا   ب   ت   ث",
-          "intro_aid": "These four letters introduce a useful idea: Arabic letters often belong to visual families. ب ت ث share the same basic body; the dots tell you which letter you are seeing.",
-          "points_ar": [
-            "ا — ألف",
-            "ب — باء",
-            "ت — تاء",
-            "ث — ثاء"
-          ],
-          "points_aid": [
-            "ا = alif",
-            "ب = bāʾ, roughly b",
-            "ت = tāʾ, roughly t",
-            "ث = thāʾ, like th in “think”"
-          ],
-          "flow": [
-            [
-              "See",
-              "Notice the body of the letter."
-            ],
-            [
-              "Compare",
-              "Count and locate the dots."
-            ],
-            [
-              "Hear",
-              "Connect shape to sound."
-            ],
-            [
-              "Recall",
-              "Identify without English."
-            ]
-          ]
-        },
-        "understand": {
-          "what": "ب ت ث are a shape family. Their main body is similar, but the dot pattern changes.",
-          "why": "Learning families reduces visual overload. Instead of treating 28 letters as 28 unrelated drawings, you recognise patterns.",
-          "how": "ب has one dot below. ت has two dots above. ث has three dots above. ا is a simple vertical stroke and behaves differently.",
-          "examples": [
-            [
-              "ب",
-              "b sound"
-            ],
-            [
-              "ت",
-              "t sound"
-            ],
-            [
-              "ث",
-              "th sound as in think"
-            ],
-            [
-              "ا",
-              "alif; often supports a long ā sound"
-            ]
-          ],
-          "note": "We are not yet teaching every connected form. First make the isolated shapes automatic."
-        },
-        "practice": [
-          {
-            "q": "Which letter has one dot below?",
-            "opts": [
-              "ب",
-              "ت",
-              "ث"
-            ],
-            "a": 0
-          },
-          {
-            "q": "Which letter has two dots above?",
-            "opts": [
-              "ث",
-              "ت",
-              "ب"
-            ],
-            "a": 1
-          },
-          {
-            "q": "Which letter has three dots above?",
-            "opts": [
-              "ب",
-              "ا",
-              "ث"
-            ],
-            "a": 2
-          },
-          {
-            "q": "Which letter is the simple vertical form in this set?",
-            "opts": [
-              "ا",
-              "ب",
-              "ت"
-            ],
-            "a": 0
-          },
-          {
-            "q": "Which letter is closest to English “t”?",
-            "opts": [
-              "ب",
-              "ت",
-              "ث"
-            ],
-            "a": 1
-          },
-          {
-            "q": "Which letter can represent a “th” sound like “think”?",
-            "opts": [
-              "ث",
-              "ت",
-              "ب"
-            ],
-            "a": 0
-          }
-        ],
-        "use": {
-          "speak_ar": "بَ — تَ — ثَ",
-          "speak_aid": "Say the three sounds slowly. The final one uses the tongue near/between the teeth, like English th in “think”.",
-          "write": "Copy ا ب ت ث in a row three times. Keep the dots clear and separate."
-        },
-        "review": [
-          "ب = one dot below.",
-          "ت = two dots above.",
-          "ث = three dots above.",
-          "ا has no dots."
-        ]
+      understand:{
+        what_ar:`يركّز هذا الدرس على مفردات «${unit.title_ar}» وعلى بناء معنى واضح باستخدام ${unit.grammar}.`,
+        what_aid:`This lesson focuses on vocabulary for ${unit.title} and on building clear meaning with ${unit.grammar}.`,
+        why_ar:`تزداد فائدة المفردات عندما ترتبط بجمل ومواقف حقيقية، لذلك ندرّب الفهم والإنتاج معًا.`,
+        why_aid:`Vocabulary becomes more useful when it is tied to sentences and real situations, so comprehension and production are trained together.`,
+        how_ar:`استمع إلى النموذج، لاحظ الكلمات الجديدة، ثم غيّر عنصرًا واحدًا في كل مرة قبل إنتاج جملة أو فقرة جديدة.`,
+        how_aid:`Listen to the model, notice the new words, then change one element at a time before producing a new sentence or paragraph.`,
+        examples:v.slice((n-1)*2,(n-1)*2+4).length>=2 ? v.slice((n-1)*2,(n-1)*2+4) : v.slice(0,4),
+        note_ar:`السياق الإقليمي يغيّر أسماء المدن والعملات والأماكن عند الحاجة، لكنه لا يحوّل الدرس إلى لهجة محلية.`,
+        note_aid:`Regional context can change cities, currencies and local examples, but the language remains Modern Standard Arabic.`
       },
-      {
-        "id": "A0-U1-L3",
-        "title": "A New Sound Family",
-        "subtitle": "ج ح خ د ذ — throat sounds and non-connecting letters",
-        "goal": "Recognise ج ح خ د ذ and hear the difference between ح and خ.",
-        "art": "ج  ح  خ   د  ذ",
-        "learn": {
-          "intro_ar": "ج   ح   خ   د   ذ",
-          "intro_aid": "Arabic contains sounds that English may not use in the same way. Do not replace them immediately with the nearest English sound; train your ear first.",
-          "points_ar": [
-            "ج — جيم",
-            "ح — حاء",
-            "خ — خاء",
-            "د — دال",
-            "ذ — ذال"
-          ],
-          "points_aid": [
-            "ج = jīm; pronunciation varies regionally, but Standard Arabic teaching commonly uses a j-like sound.",
-            "ح = ḥāʾ, a clear breathy throat sound.",
-            "خ = khāʾ, a rougher sound from the back of the mouth/throat.",
-            "د = dāl, d.",
-            "ذ = dhāl, like th in “this”."
-          ],
-          "flow": [
-            [
-              "See",
-              "ج ح خ share a body."
-            ],
-            [
-              "Hear",
-              "ح and خ are not the same."
-            ],
-            [
-              "Notice",
-              "د and ذ do not join to the next letter on the left."
-            ],
-            [
-              "Use",
-              "Identify by shape + sound."
-            ]
-          ]
-        },
-        "understand": {
-          "what": "ج ح خ form another visual family. د ذ form a second small family.",
-          "why": "Arabic reading becomes easier when you recognise both shape families and joining behaviour.",
-          "how": "ج has a dot below, ح has no dot, خ has a dot above. د has no dot; ذ has one dot above. د and ذ are “non-joiners” on their left side.",
-          "examples": [
-            [
-              "ج",
-              "jīm"
-            ],
-            [
-              "ح",
-              "ḥāʾ"
-            ],
-            [
-              "خ",
-              "khāʾ"
-            ],
-            [
-              "د",
-              "dāl"
-            ],
-            [
-              "ذ",
-              "dhāl"
-            ]
-          ],
-          "note": "“Non-joiner” does not mean the letter never connects. It means it does not connect forward to the following letter on its left."
-        },
-        "practice": [
-          {
-            "q": "Which letter has a dot below in the ج ح خ family?",
-            "opts": [
-              "ج",
-              "ح",
-              "خ"
-            ],
-            "a": 0
-          },
-          {
-            "q": "Which has no dot?",
-            "opts": [
-              "خ",
-              "ح",
-              "ج"
-            ],
-            "a": 1
-          },
-          {
-            "q": "Which has one dot above?",
-            "opts": [
-              "خ",
-              "ج",
-              "ح"
-            ],
-            "a": 0
-          },
-          {
-            "q": "Which pair are non-joiners to the following letter?",
-            "opts": [
-              "د ذ",
-              "ج ح",
-              "ب ت"
-            ],
-            "a": 0
-          },
-          {
-            "q": "Which letter is like th in “this”?",
-            "opts": [
-              "ذ",
-              "د",
-              "ح"
-            ],
-            "a": 0
-          },
-          {
-            "q": "Which sound is rougher and farther back than ح?",
-            "opts": [
-              "خ",
-              "ج",
-              "د"
-            ],
-            "a": 0
-          }
-        ],
-        "use": {
-          "speak_ar": "حَ — خَ — دَ — ذَ",
-          "speak_aid": "Contrast حَ and خَ. Avoid turning both into ordinary English h. Accuracy will improve over time; the goal now is to hear that they are different.",
-          "write": "Copy ج ح خ as a family, then د ذ. Mark the dots carefully."
-        },
-        "review": [
-          "ج ح خ share a basic shape.",
-          "د and ذ do not join to the next letter on the left.",
-          "ح and خ are distinct sounds."
-        ]
+      practice:makePractice(unit,n),
+      use:{
+        speak_ar:speak,
+        speak_aid:speakAid,
+        write_ar:n<3?`اكتب ثلاث جمل عن «${unit.title_ar}» مستخدمًا ثلاث كلمات جديدة على الأقل.`:
+                 n===3?`اكتب ملخصًا قصيرًا من 3–5 جمل للنص، ثم أضف معلومة من عندك.`:
+                 n===4?`اكتب فقرة عملية من 5–8 جمل مرتبطة بالموقف مستخدمًا مفردات الوحدة.`:
+                 `أنجز مهمة مراجعة: اكتب فقرة مترابطة تجمع المفردات والقواعد ومثالًا من حياتك أو بيئتك.`,
+        write_aid:n<3?`Write three sentences about ${unit.title} using at least three new words.`:
+                  n===3?`Write a 3–5 sentence summary of the text, then add one idea of your own.`:
+                  n===4?`Write a practical 5–8 sentence paragraph using the unit language.`:
+                  `Complete a review task: write a connected paragraph combining vocabulary, the language focus and a real example.`
       },
-      {
-        "id": "A0-U1-L4",
-        "title": "More Letters, Better Reading",
-        "subtitle": "ر ز س ش — curves, dots and another non-joiner pair",
-        "goal": "Recognise ر ز س ش and combine them with earlier letters in simple visual decoding.",
-        "art": "ر  ز   س  ش",
-        "learn": {
-          "intro_ar": "ر   ز   س   ش",
-          "intro_aid": "You are building a reading system, not just memorising letter names. Today, notice another pair and another shape family.",
-          "points_ar": [
-            "ر — راء",
-            "ز — زاي",
-            "س — سين",
-            "ش — شين"
-          ],
-          "points_aid": [
-            "ر = rāʾ, an r sound; exact pronunciation is trained later.",
-            "ز = zāy, z.",
-            "س = sīn, s.",
-            "ش = shīn, sh."
-          ],
-          "flow": [
-            [
-              "Compare",
-              "ر / ز differ by a dot."
-            ],
-            [
-              "Compare",
-              "س / ش differ by three dots."
-            ],
-            [
-              "Connect",
-              "Mix with letters you already know."
-            ],
-            [
-              "Read",
-              "Move right → left."
-            ]
-          ]
-        },
-        "understand": {
-          "what": "ر ز are a pair; س ش are a pair. The dot pattern changes the identity of the letter.",
-          "why": "Arabic readers rely on the whole shape plus dots. Ignoring dots can completely change a word.",
-          "how": "ر has no dot; ز has one dot above. س has no dots; ش has three dots above. ر and ز are also non-joiners to the next letter on the left.",
-          "examples": [
-            [
-              "ر",
-              "r"
-            ],
-            [
-              "ز",
-              "z"
-            ],
-            [
-              "س",
-              "s"
-            ],
-            [
-              "ش",
-              "sh"
-            ]
-          ],
-          "note": "At first, accuracy matters more than speed. Point to each letter and name or sound it correctly."
-        },
-        "practice": [
-          {
-            "q": "Which letter has one dot above?",
-            "opts": [
-              "ر",
-              "ز",
-              "س"
-            ],
-            "a": 1
-          },
-          {
-            "q": "Which letter has three dots above?",
-            "opts": [
-              "ش",
-              "س",
-              "ز"
-            ],
-            "a": 0
-          },
-          {
-            "q": "Which letter gives an s sound?",
-            "opts": [
-              "ش",
-              "س",
-              "ر"
-            ],
-            "a": 1
-          },
-          {
-            "q": "Which gives an sh sound?",
-            "opts": [
-              "ز",
-              "ش",
-              "س"
-            ],
-            "a": 1
-          },
-          {
-            "q": "Which pair are non-joiners to the following letter?",
-            "opts": [
-              "ر ز",
-              "س ش",
-              "ب ت"
-            ],
-            "a": 0
-          },
-          {
-            "q": "You should read an Arabic sequence starting from the…",
-            "opts": [
-              "left",
-              "right",
-              "middle"
-            ],
-            "a": 1
-          }
-        ],
-        "use": {
-          "speak_ar": "سَ — شَ — زَ — رَ",
-          "speak_aid": "Keep س /s/ and ش /sh/ clearly different. For ر, a perfect rolled/tapped r is not required yet; build it gradually.",
-          "write": "Write ر ز on one line and س ش on another. Circle the dots that distinguish each pair."
-        },
-        "review": [
-          "ر / ز differ by one dot.",
-          "س / ش differ by three dots.",
-          "ر and ز are non-joiners."
-        ]
-      },
-      {
-        "id": "A0-U1-L5",
-        "title": "First Reading Lab",
-        "subtitle": "Review, short vowels and your first controlled decoding",
-        "goal": "Use َ ِ ُ with familiar letters and decode short syllables from right to left.",
-        "art": "بَ  بِ  بُ",
-        "learn": {
-          "intro_ar": "بَ   بِ   بُ",
-          "intro_aid": "Arabic short vowels can be shown with small marks. Beginner texts often use them more heavily; everyday adult texts often omit many of them because readers infer the vowels from vocabulary and grammar.",
-          "points_ar": [
-            "َ  فَتْحَة",
-            "ِ  كَسْرَة",
-            "ُ  ضَمَّة"
-          ],
-          "points_aid": [
-            "َ fatḥa = a short a-like vowel",
-            "ِ kasra = a short i-like vowel",
-            "ُ ḍamma = a short u-like vowel"
-          ],
-          "flow": [
-            [
-              "Letter",
-              "Recognise ب"
-            ],
-            [
-              "Vowel mark",
-              "Notice َ ِ ُ"
-            ],
-            [
-              "Sound",
-              "Say ba / bi / bu"
-            ],
-            [
-              "Decode",
-              "Combine without English letters."
-            ]
-          ]
-        },
-        "understand": {
-          "what": "Fatḥa, kasra and ḍamma are short-vowel marks placed around a consonant letter.",
-          "why": "They help beginners pronounce unfamiliar words accurately. Later you will learn to read many words without every vowel mark being written.",
-          "how": "Fatḥa sits above and gives a short a-like sound. Kasra sits below and gives i. Ḍamma sits above and gives u.",
-          "examples": [
-            [
-              "بَ",
-              "ba"
-            ],
-            [
-              "بِ",
-              "bi"
-            ],
-            [
-              "بُ",
-              "bu"
-            ],
-            [
-              "تَ",
-              "ta"
-            ],
-            [
-              "سِ",
-              "si"
-            ],
-            [
-              "شُ",
-              "shu"
-            ]
-          ],
-          "note": "English spellings like “ba” are temporary learning aids. Your long-term goal is to see بَ and hear /ba/ directly."
-        },
-        "practice": [
-          {
-            "q": "Which mark represents a short i-like vowel?",
-            "opts": [
-              "َ",
-              "ِ",
-              "ُ"
-            ],
-            "a": 1
-          },
-          {
-            "q": "How should بَ be read?",
-            "opts": [
-              "ba",
-              "bi",
-              "bu"
-            ],
-            "a": 0
-          },
-          {
-            "q": "How should تِ be read?",
-            "opts": [
-              "ta",
-              "ti",
-              "tu"
-            ],
-            "a": 1
-          },
-          {
-            "q": "How should شُ be read?",
-            "opts": [
-              "sha",
-              "shi",
-              "shu"
-            ],
-            "a": 2
-          },
-          {
-            "q": "Beginner Arabic texts often show more vowel marks because…",
-            "opts": [
-              "Arabic has no consonants",
-              "the marks support accurate pronunciation",
-              "they change the writing direction"
-            ],
-            "a": 1
-          },
-          {
-            "q": "Your long-term goal is to…",
-            "opts": [
-              "depend forever on English transliteration",
-              "connect Arabic script directly to sound and meaning",
-              "avoid reading without vowel marks"
-            ],
-            "a": 1
-          },
-          {
-            "q": "Which sequence is read from the right?",
-            "opts": [
-              "Arabic script",
-              "English script",
-              "both always"
-            ],
-            "a": 0
-          }
-        ],
-        "use": {
-          "speak_ar": "بَ بِ بُ — تَ تِ تُ — سَ سِ سُ",
-          "speak_aid": "Read each three-part group slowly, then repeat with less hesitation. Do not rush.",
-          "write": "Copy three syllables: بَ  تِ  شُ. Then cover the model and try once from memory."
-        },
-        "review": [
-          "َ = short a-like vowel.",
-          "ِ = short i-like vowel.",
-          "ُ = short u-like vowel.",
-          "English transliteration is temporary support, not the final reading method."
-        ]
-      }
-    ]
-  },
-  "roadmap": [
-    [
-      "A0-U1",
-      "Entering Arabic",
-      "Direction, first letter families, short vowels",
-      "ready"
-    ],
-    [
-      "A0-U2",
-      "Completing the Alphabet",
-      "Remaining letters, connected forms and joining rules",
-      "planned"
-    ],
-    [
-      "A0-U3",
-      "Reading Foundations",
-      "Long vowels, sukūn, shadda, tanwīn and hamza basics",
-      "planned"
-    ],
-    [
-      "A0-U4",
-      "Your First Conversations",
-      "Greetings, names, countries, courtesy and classroom survival",
-      "planned"
-    ],
-    [
-      "A0-U5",
-      "People and Things",
-      "Gender, this/that, definite article, simple adjectives",
-      "planned"
-    ],
-    [
-      "A0-U6",
-      "Numbers and Everyday Information",
-      "0–20, phone numbers, prices, dates and simple time",
-      "planned"
-    ],
-    [
-      "A0-U7",
-      "Questions and Location",
-      "Who, what, where, basic prepositions and location",
-      "planned"
-    ],
-    [
-      "A0-U8",
-      "A0 Consolidation",
-      "Integrated reading, listening, speaking and writing bridge to A1",
-      "planned"
-    ],
-    [
-      "A1",
-      "A1 Beginner",
-      "Core practical MSA for everyday communication",
-      "planned"
-    ],
-    [
-      "A2",
-      "A2 Elementary",
-      "Expanded daily, study and work communication",
-      "planned"
-    ],
-    [
-      "B1",
-      "B1 Intermediate",
-      "Independent communication and connected text",
-      "planned"
-    ],
-    [
-      "B2",
-      "B2 Upper Intermediate",
-      "Professional, academic and wider public communication",
-      "planned"
-    ],
-    [
-      "C1",
-      "C1 Advanced",
-      "Advanced MSA comprehension and production",
-      "planned"
-    ],
-    [
-      "C2",
-      "C2 Proficiency",
-      "High-level precision, style and sophisticated communication",
-      "planned"
-    ]
-  ]
-};
+      review:[
+        `مفردات أساسية: ${v.slice(0,5).map(x=>x[0]).join('، ')}.`,
+        `التركيز اللغوي: ${unit.grammar}.`,
+        `الهدف العملي: ${unit.product}.`
+      ],
+      review_aid:[
+        `Core vocabulary: ${v.slice(0,5).map(x=>x[1]).join(', ')}.`,
+        `Language focus: ${unit.grammar}.`,
+        `Real-world goal: ${unit.product}.`
+      ],
+      regional_ar:`طبّق هذا الموضوع في {city} أو في مكان مشابه في بلدك. استخدم {currency} عند الحاجة، وابقَ على العربية الفصحى.`,
+      regional_aid:`Apply this topic in {city} or a similar place where you live. Use {currency} when relevant; keep the language in Modern Standard Arabic.`
+    };
+  }
+
+  const levels={};
+  const lessonIndex={};
+  const unitIndex={};
+  for(const level of LEVEL_ORDER){
+    levels[level]={...LEVEL_META[level],id:level,units:[]};
+    const specs=UNIT_SPECS.filter(x=>x.level===level);
+    for(const unit of specs){
+      const lessons=(unit.id==='A0-U1') ? SPECIAL_A0_U1.map(x=>({...x,level:'A0',unitId:'A0-U1',unitNumber:1,title_ar:x.title_ar||x.title})) :
+        [1,2,3,4,5].map(n=>makeLesson(unit,n));
+      const full={...unit,lessons,status:'ready'};
+      levels[level].units.push(full); unitIndex[unit.id]=full;
+      for(const lesson of lessons) lessonIndex[lesson.id]=lesson;
+    }
+  }
+
+  const allUnits=LEVEL_ORDER.flatMap(l=>levels[l].units);
+  const allLessons=allUnits.flatMap(u=>u.lessons);
+  window.ARABIC_COURSE={
+    courseTitle:'Arabic Pathways — International',
+    courseLanguage:'Modern Standard Arabic',
+    version:'0.3.0',
+    levels,levelOrder:LEVEL_ORDER,allUnits,allLessons,lessonIndex,unitIndex,
+    stats:{levels:LEVEL_ORDER.length,units:allUnits.length,lessons:allLessons.length},
+    coverage:[...new Set(allUnits.flatMap(u=>u.tags||[]))].sort()
+  };
+})();

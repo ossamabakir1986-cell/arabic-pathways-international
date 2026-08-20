@@ -1,21 +1,25 @@
-Arabic Pathways International v0.2.2 validation
-================================================
-Complete lessons: 5
-Practice questions: 30
+Arabic Pathways International v0.3.0 validation
 
-PASS - App JS syntax checked with node --check
-PASS - Five complete A0 Unit 1 lessons retained
-PASS - Thirty objective practice questions retained
-PASS - Panel languages limited to English and Arabic
-PASS - No Spanish aid/interface content
-PASS - English learning aid retained
-PASS - Separate audio tile per isolated letter in A0 letter-family lessons
-PASS - Separate audio tile per vowelled syllable in A0 reading drills
-PASS - Multi-letter strings are no longer sent as one local speech request from those tiles
-PASS - Normal/Slow audio retained for real words and phrases
-PASS - Speaking Lab recorder retained
-PASS - Gemini gateway URL remains blank for safe local testing
-PASS - No API key embedded in app config
-PASS - Existing localStorage namespace preserved
-PASS - No dialect/slang track added
-PASS - No Qur'anic/deep heritage content added
+PASS: course-data.js JavaScript syntax
+PASS: app.js JavaScript syntax
+PASS: 7 levels generated
+PASS: 70 units generated
+PASS: 350 lessons generated
+PASS: 50 lessons per level
+PASS: first lesson A0-U1-L1
+PASS: last lesson C2-U10-L5
+PASS: existing localStorage progress key preserved
+PASS: individual A0 sound-tile system preserved
+PASS: Gemini TTS + AI speaking hooks preserved
+PASS: regional context remains MSA, not dialect
+PASS: English/Arabic panels preserved
+PASS: English aid ON/OFF preserved
+PASS: no Qur'anic / deep heritage strand added to the International course
+
+REQUIRES HUMAN REVIEW BEFORE COMMERCIAL RELEASE:
+- Arabic academic proofreading across all 350 lessons
+- level-by-level CEFR-style calibration for Arabic
+- exercise distractor quality and repetition balancing
+- natural TTS checks for all key pronunciation targets
+- listening audio timing and real-device microphone tests
+- final end-of-level exams and placement calibration
