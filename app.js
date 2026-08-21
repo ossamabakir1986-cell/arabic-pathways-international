@@ -188,6 +188,7 @@
   }
 
   function arList(items){return `<div class="arabic box">${(items||[]).map(x=>`<div>${esc(x)}</div>`).join('')}</div>`;}
+  function vocabularyGrid(items){return `<div class="vocab-grid">${(items||[]).map(x=>`<div class="vocab-item"><span class="arabic">${esc(x[0])}</span>${singleHearButton(x[0])}${state.aid?`<small>${esc(x[1])}</small>`:''}</div>`).join('')}</div>`;}
   function hearButtons(text){const careful=/^(A0|A1)$/.test(currentArabicLevel_());return `<span class="hear-group"><button class="hear" data-speak="${esc(text)}" data-speed="normal">🔊 ${tr('normal')}</button>${careful?`<button class="hear secondary" data-speak="${esc(text)}" data-speed="careful">🐢 ${tr('slow')}</button>`:''}</span>`;}
   function teachingTokens(text){
     const cleaned=String(text||'').trim().replace(/[—–|،,؛;]+/g,' ').replace(/\s+/g,' ');
@@ -212,7 +213,7 @@
   function lessonPanel(l,step,u){
     if(step==='learn'){
       const intro=l.learn?.intro_ar||'';
-      return `<h2>${tr('learn')}</h2>${teachingTokens(intro).length>1?soundTileGrid(intro):`<div class="arabic box" style="font-size:2rem">${esc(intro)} ${hearButtons(intro)}</div>`}${aid(l.learn?.intro_aid)}
+      return `<h2>${tr('learn')}</h2>${teachingTokens(intro).length>1?soundTileGrid(intro):`<div class="arabic box" style="font-size:2rem">${esc(intro)} ${hearButtons(intro)}</div>`}${aid(l.learn?.intro_aid)}${vocabularyGrid(l.vocabulary||[])}
         ${arList(l.learn?.points_ar||[])}${state.aid?`<ul>${(l.learn?.points_aid||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}
         <div class="visual-flow">${(l.learn?.flow||[]).map(x=>`<div class="flow-card"><b>${esc(x[0])}</b><span>${esc(x[1])}</span></div>`).join('')}</div>${regionalCard(l)}`;
     }
