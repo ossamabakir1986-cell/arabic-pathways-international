@@ -1,4 +1,4 @@
-Arabic Pathways — International v0.4.2
+Arabic Pathways — International v0.4.3
 
 Major upgrades:
 - Full A0-C2 curriculum remains 350 lessons / 70 units.
@@ -12,5 +12,6 @@ Major upgrades:
 - The student profile exposes unified Pathways account connection, Arabic-product cloud save/restore, delayed retry, last-sync status and conflict protection.
 - Beginner enrichment is now lesson-deep: common colors are taught together, with broad grouped coverage of numbers, shapes, food, drinks, fruits, vegetables, buildings, rooms, furniture, daily activities, animals, plants, nature and weather.
 - Decorative Arabic artwork is constrained to one representative item with phone-safe wrapping.
+- Single vocabulary words now speak immediately through the best available Arabic device voice while the natural Gemini version warms and persists silently; later taps use the cached natural voice without first-tap waiting.
 
 Keep config.js private-key free. The browser stores only the Apps Script /exec gateway URL.

@@ -301,13 +301,26 @@
     try{
       if(gatewayConfigured()){
         const level=currentArabicLevel_(),key=`v0.4.1|${level}|${speed}|${teaching.spoken}`;let url=ttsCache.get(key);
-        if(!url){let blob=await ttsDbGet(key);if(!blob){let pending=ttsInflight.get(key);if(!pending){pending=(async()=>{const data=await jsonp({action:'arabicTts',text:teaching.spoken,mode:speed==='careful'?'slow':'normal',level},35000);if(!data||!data.ok||!data.audioBase64)throw new Error(data&&data.error||'No audio returned.');const b=audioBlobFromResponse(data);await ttsDbPut(key,b);return b;})();ttsInflight.set(key,pending);}try{blob=await pending;}finally{ttsInflight.delete(key);}}url=URL.createObjectURL(blob);ttsCache.set(key,url);}
+        if(!url){const cached=await ttsDbGet(key);if(cached){url=URL.createObjectURL(cached);ttsCache.set(key,url);}}
+        if(!url&&speed==='normal'&&isInstantVocabulary_(teaching.spoken)){
+          warmNaturalVoice_(key,teaching.spoken,level,'normal');
+          await fallbackSpeak(teaching.chunks,'normal');
+          return;
+        }
+        if(!url){const blob=await naturalVoiceBlob_(key,teaching.spoken,level,speed);url=URL.createObjectURL(blob);ttsCache.set(key,url);}
         if(audioPlayer)audioPlayer.pause();audioPlayer=new Audio(url);await audioPlayer.play();return;
       }
       await fallbackSpeak(teaching.chunks,speed);
     }catch(err){console.warn('Arabic voice fallback:',err);try{await fallbackSpeak(teaching.chunks,speed);}catch(_){}}
     finally{if(button){button.disabled=false;button.classList.remove('busy');button.innerHTML=label;}}
   }
+  function isInstantVocabulary_(text){const s=String(text||'').trim();return s.length>0&&s.length<=36&&s.split(/\s+/).length<=3&&!/[.!?؟؛،]/.test(s);}
+  async function naturalVoiceBlob_(key,text,level,speed){
+    let pending=ttsInflight.get(key);
+    if(!pending){pending=(async()=>{const data=await jsonp({action:'arabicTts',text,mode:speed==='careful'?'slow':'normal',level},35000);if(!data||!data.ok||!data.audioBase64)throw new Error(data&&data.error||'No audio returned.');const blob=audioBlobFromResponse(data);await ttsDbPut(key,blob);return blob;})();ttsInflight.set(key,pending);}
+    try{return await pending;}finally{ttsInflight.delete(key);}
+  }
+  function warmNaturalVoice_(key,text,level,speed){naturalVoiceBlob_(key,text,level,speed).then(blob=>{if(!ttsCache.has(key))ttsCache.set(key,URL.createObjectURL(blob));}).catch(err=>console.warn('Natural voice warm-up pending:',err));}
   function fallbackSpeak(chunks,speed){
     return new Promise(resolve=>{if(!('speechSynthesis'in window)){resolve();return;}window.speechSynthesis.cancel();const list=Array.isArray(chunks)&&chunks.length?chunks:[''],voices=window.speechSynthesis.getVoices(),arabic=voices.find(v=>/^ar[-_]/i.test(v.lang||''));let i=0;const gap=speed==='careful'?620:260;
       const next=()=>{if(i>=list.length){resolve();return;}const u=new SpeechSynthesisUtterance(list[i++]);u.lang='ar';u.rate=speed==='careful'?.5:.82;u.pitch=1;if(arabic)u.voice=arabic;u.onend=()=>setTimeout(next,gap);u.onerror=()=>setTimeout(next,gap);window.speechSynthesis.speak(u);};next();

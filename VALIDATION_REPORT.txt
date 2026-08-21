@@ -1,4 +1,4 @@
-Arabic Pathways International v0.4.2 validation
+Arabic Pathways International v0.4.3 validation
 Levels: 7
 Units: 70
 Lessons: 350
@@ -8,6 +8,7 @@ A0 common colors present: أَحْمَر, أَزْرَق, أَخْضَر, أَص
 Cloud client: productSyncSave/productSyncLoad
 Mobile PWA: install/offline/update handling
 TTS: IndexedDB persistent cache + in-flight deduplication + A0/A1 careful pronunciation
+First-tap vocabulary audio: immediate device playback + background natural-voice cache warming
 Student sync: product-separated save/restore + delayed retry + last-sync status
 Admin portal: present
 Enriched A0 unit vocabulary: food 63; buildings/home 58; daily activities 44; animals/plants/nature 57

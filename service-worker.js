@@ -1,5 +1,5 @@
-const CACHE='arabic-pathways-intl-v0.4.2';
-const CORE=['./','index.html','app.css?v=0.4.2','config.js?v=0.4.2','app.js?v=0.4.2','mobile-app.js?v=0.4.2','course-data.js?v=0.4.2','manifest.webmanifest','icons/icon.svg','admin/','admin/index.html','admin/admin.css','admin/admin.js'];
+const CACHE='arabic-pathways-intl-v0.4.3';
+const CORE=['./','index.html','app.css?v=0.4.3','config.js?v=0.4.3','app.js?v=0.4.3','mobile-app.js?v=0.4.3','course-data.js?v=0.4.3','manifest.webmanifest','icons/icon.svg','admin/','admin/index.html','admin/admin.css','admin/admin.js'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('arabic-pathways-intl-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('message',e=>{if(e.data==='SKIP_WAITING')self.skipWaiting()});
