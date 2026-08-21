@@ -6,6 +6,45 @@
   const LEVEL_ORDER = ['A0','A1','A2','B1','B2','C1','C2'];
   const AID_BY_LEVEL = {A0:'Full English scaffolding',A1:'Full English support',A2:'Moderate English support',B1:'Light English support',B2:'Optional English reference',C1:'Minimal English reference',C2:'Reference only'};
 
+  const ENRICHED_GROUPS = {
+    'A0-U5':[
+      [['صِفْر','zero'],['وَاحِد','one'],['اِثْنَان','two'],['ثَلَاثَة','three'],['أَرْبَعَة','four'],['خَمْسَة','five'],['سِتَّة','six'],['سَبْعَة','seven'],['ثَمَانِيَة','eight'],['تِسْعَة','nine'],['عَشَرَة','ten']],
+      [['أَحَدَ عَشَرَ','eleven'],['اِثْنَا عَشَرَ','twelve'],['ثَلَاثَةَ عَشَرَ','thirteen'],['أَرْبَعَةَ عَشَرَ','fourteen'],['خَمْسَةَ عَشَرَ','fifteen'],['سِتَّةَ عَشَرَ','sixteen'],['سَبْعَةَ عَشَرَ','seventeen'],['ثَمَانِيَةَ عَشَرَ','eighteen'],['تِسْعَةَ عَشَرَ','nineteen'],['عِشْرُونَ','twenty']],
+      [['أَحْمَر','red'],['أَزْرَق','blue'],['أَخْضَر','green'],['أَصْفَر','yellow'],['أَبْيَض','white'],['أَسْوَد','black'],['بُرْتُقَالِيّ','orange'],['وَرْدِيّ','pink'],['بَنَفْسَجِيّ','purple'],['بُنِّيّ','brown'],['رَمَادِيّ','grey']],
+      [['دَائِرَة','circle'],['مُرَبَّع','square'],['مُثَلَّث','triangle'],['مُسْتَطِيل','rectangle'],['بَيْضَوِيّ','oval'],['نَجْمَة','star'],['خَطّ','line'],['نُقْطَة','dot'],['كَبِير','large'],['صَغِير','small']],
+      [['فَاتِح','light'],['دَاكِن','dark'],['ذَهَبِيّ','gold'],['فِضِّيّ','silver'],['مُلَوَّن','colourful'],['حَمْرَاء','red feminine'],['زَرْقَاء','blue feminine'],['خَضْرَاء','green feminine'],['صَفْرَاء','yellow feminine'],['بَيْضَاء','white feminine'],['سَوْدَاء','black feminine']]
+    ],
+    'A0-U7':[
+      [['خُبْز','bread'],['أَرُزّ','rice'],['لَحْم','meat'],['دَجَاج','chicken'],['سَمَك','fish'],['بَيْض','eggs'],['جُبْن','cheese'],['حَلِيب','milk'],['لَبَن','yogurt'],['حَسَاء','soup'],['سَلَطَة','salad'],['مَعْكَرُونَة','pasta']],
+      [['مَاء','water'],['شَاي','tea'],['قَهْوَة','coffee'],['حَلِيب','milk'],['عَصِير','juice'],['عَصِير بُرْتُقَال','orange juice'],['عَصِير تُفَّاح','apple juice'],['مَشْرُوب بَارِد','cold drink'],['مَشْرُوب سَاخِن','hot drink'],['كُوب','cup']],
+      [['تُفَّاح','apple'],['بُرْتُقَال','orange'],['مَوْز','banana'],['عِنَب','grapes'],['فَرَاوِلَة','strawberry'],['بِطِّيخ','watermelon'],['شَمَّام','melon'],['مَانْجُو','mango'],['رُمَّان','pomegranate'],['خَوْخ','peach'],['مِشْمِش','apricot'],['كُمَّثْرَى','pear'],['لَيْمُون','lemon'],['تَمْر','dates'],['تِين','figs']],
+      [['بَطَاطِس','potato'],['طَمَاطِم','tomato'],['خِيَار','cucumber'],['بَصَل','onion'],['ثُوم','garlic'],['جَزَر','carrot'],['خَسّ','lettuce'],['فِلْفِل','pepper'],['بَاذِنْجَان','aubergine'],['كُوسَا','courgette'],['قَرْنَبِيط','cauliflower'],['مَلْفُوف','cabbage'],['سَبَانِخ','spinach'],['بَازِلَّاء','peas'],['فَاصُولِيَاء','beans']],
+      [['فُطُور','breakfast'],['غَدَاء','lunch'],['عَشَاء','dinner'],['وَجْبَة خَفِيفَة','snack'],['أَطْبُخ','I cook'],['أَقْطَع','I cut'],['أَغْسِل','I wash'],['أَكُل','I eat'],['أَشْرَب','I drink'],['حُلْو','sweet'],['مَالِح','salty'],['لَذِيذ','delicious']]
+    ],
+    'A0-U8':[
+      [['بَيْت','house'],['شَقَّة','apartment'],['فِيلَّا','villa'],['بُرْج','tower'],['مَبْنَى','building'],['مَبْنَى مَكَاتِب','office building'],['فُنْدُق','hotel'],['مُسْتَشْفَى','hospital'],['مَدْرَسَة','school'],['جَامِعَة','university'],['مَرْكَز تَسَوُّق','shopping centre'],['مُسْتَوْدَع','warehouse'],['مَصْنَع','factory'],['مَزْرَعَة','farm']],
+      [['غُرْفَة','room'],['غُرْفَة نَوْم','bedroom'],['غُرْفَة جُلُوس','living room'],['مَطْبَخ','kitchen'],['حَمَّام','bathroom'],['شُرْفَة','balcony'],['حَدِيقَة','garden'],['سَطْح','roof'],['طَابِق','floor'],['مَمَرّ','corridor']],
+      [['بَاب','door'],['نَافِذَة','window'],['مِصْعَد','lift'],['دَرَج','stairs'],['مَدْخَل','entrance'],['جِدَار','wall'],['أَرْضِيَّة','floor surface'],['سَقْف','ceiling'],['مَوْقِف سَيَّارَات','parking'],['بَوَّابَة','gate']],
+      [['سَرِير','bed'],['طَاوِلَة','table'],['كُرْسِيّ','chair'],['أَرِيكَة','sofa'],['خِزَانَة','wardrobe'],['مَكْتَب','desk'],['مِصْبَاح','lamp'],['سَجَّادَة','carpet'],['سِتَارَة','curtain'],['ثَلَّاجَة','fridge'],['فُرْن','oven'],['غَسَّالَة','washing machine']],
+      [['كَبِير','large'],['صَغِير','small'],['طَوِيل','tall'],['قَصِير','short'],['حَدِيث','modern'],['تَقْلِيدِيّ','traditional'],['جَدِيد','new'],['قَدِيم','old'],['قَرِيب','near'],['بَعِيد','far'],['وَاسِع','spacious'],['مُضِيء','bright']]
+    ],
+    'A0-U9':[
+      [['أَسْتَيْقِظ','wake up'],['أَنْهَض','get out of bed'],['أَغْسِل','wash'],['أَسْتَحِمّ','shower'],['أَلْبَس','get dressed'],['أَتَنَاوَل الفُطُور','eat breakfast'],['أَشْرَب','drink'],['أَخْرُج مِنَ البَيْت','leave home']],
+      [['أَذْهَب إِلَى العَمَل','go to work'],['أَذْهَب إِلَى المَدْرَسَة','go to school'],['أَعْمَل','work'],['أَدْرُس','study'],['أَجْتَمِع','meet'],['أَتَكَلَّم','speak'],['أَسْتَمِع','listen'],['أَقْرَأ','read'],['أَكْتُب','write']],
+      [['أَقُود','drive'],['أَمْشِي','walk'],['أَرْكَب الحَافِلَة','take the bus'],['أَشْتَرِي','buy'],['أَزُور','visit'],['أَذْهَب إِلَى السُّوق','go to the market'],['أَذْهَب إِلَى البَنْك','go to the bank'],['أَذْهَب إِلَى الصَّيْدَلِيَّة','go to the pharmacy']],
+      [['أَطْبُخ','cook'],['أَتَنَاوَل الغَدَاء','eat lunch'],['أَرْجِع إِلَى البَيْت','return home'],['أَتَمَرَّن','exercise'],['أُشَاهِد','watch'],['أَسْتَخْدِم الحَاسُوب','use a computer'],['أَسْتَرِيح','rest'],['أَتَنَاوَل العَشَاء','eat dinner'],['أَنَام','sleep']],
+      [['صَبَاحًا','in the morning'],['ظُهْرًا','at noon'],['مَسَاءً','in the evening'],['لَيْلًا','at night'],['الآن','now'],['اليَوْم','today'],['كُلَّ يَوْم','every day'],['دَائِمًا','always'],['أَحْيَانًا','sometimes'],['عَادَةً','usually']]
+    ],
+    'A0-U10':[
+      [['قِطّ','cat'],['كَلْب','dog'],['طَائِر','bird'],['سَمَكَة','fish'],['أَرْنَب','rabbit'],['حِصَان','horse'],['جَمَل','camel'],['بَقَرَة','cow'],['خَرُوف','sheep'],['مَاعِز','goat'],['دَجَاجَة','chicken'],['بَطَّة','duck']],
+      [['أَسَد','lion'],['نَمِر','tiger'],['فِيل','elephant'],['قِرْد','monkey'],['زَرَافَة','giraffe'],['ذِئْب','wolf'],['ثَعْلَب','fox'],['دُبّ','bear'],['حُوت','whale'],['دُلْفِين','dolphin'],['سُلَحْفَاة','turtle'],['قِرْش','shark']],
+      [['شَجَرَة','tree'],['زَهْرَة','flower'],['عُشْب','grass'],['نَبَات','plant'],['حَدِيقَة','garden'],['غَابَة','forest'],['نَخْلَة','palm tree'],['شَجَرَة زَيْتُون','olive tree'],['وَرْدَة','rose'],['يَاسَمِين','jasmine'],['مَحْصُول','crop'],['زِرَاعَة','agriculture']],
+      [['صَحْرَاء','desert'],['جَبَل','mountain'],['نَهْر','river'],['بَحْر','sea'],['شَاطِئ','beach'],['وَادٍ','valley'],['جَزِيرَة','island'],['سَهْل','plain'],['سَاحِل','coast'],['حَقْل','field']],
+      [['طَقْس','weather'],['شَمْس','sun'],['مَطَر','rain'],['رِيح','wind'],['سَحَاب','cloud'],['حَارّ','hot'],['بَارِد','cold'],['رَبِيع','spring'],['صَيْف','summer'],['خَرِيف','autumn'],['شِتَاء','winter']]
+    ]
+  };
+  for(const unit of UNIT_SPECS){const groups=ENRICHED_GROUPS[unit.id];if(groups){const seen=new Set();unit.vocab=groups.flat().filter(x=>{const k=x[0];if(seen.has(k))return false;seen.add(k);return true;});}}
+  function lessonWords(unit,n){const exact=ENRICHED_GROUPS[unit.id]?.[n-1];if(exact)return exact;const count=Math.min(8,unit.vocab.length),start=((n-1)*count)%unit.vocab.length;return Array.from({length:count},(_,i)=>pick(unit.vocab,start+i));}
   function pick(arr,i){ return arr[((i%arr.length)+arr.length)%arr.length]; }
   function levelBand(level){
     if(level==='A0') return 'absolute beginner';
@@ -39,9 +78,9 @@
     return `${amount}. This ${band} lesson develops ${unit.product}. The Arabic examples stay in Modern Standard Arabic; regional context changes examples, not dialect.`;
   }
   function ArabicPoints(unit,n){
-    const v=unit.vocab;
+    const v=lessonWords(unit,n);
     const groups=[
-      `تعلّم الكلمات الأساسية في موضوع «${unit.title_ar}»: ${v.slice(0,4).map(x=>x[0]).join('، ')}.`,
+      `تعلّم مجموعة مفيدة في موضوع «${unit.title_ar}»: ${v.map(x=>x[0]).join('، ')}.`,
       `لاحظ كيف نستخدم ${unit.grammar} داخل جمل مفيدة.`,
       `اربط المفردات بالموقف الحقيقي بدل حفظ الكلمات منفردة.`
     ];
@@ -52,9 +91,9 @@
     return groups;
   }
   function EnglishPoints(unit,n){
-    const v=unit.vocab;
+    const v=lessonWords(unit,n);
     const groups=[
-      `Learn core words for ${unit.title}: ${v.slice(0,4).map(x=>x[1]).join(', ')}.`,
+      `Learn a useful set for ${unit.title}: ${v.map(x=>x[1]).join(', ')}.`,
       `Notice how ${unit.grammar} works inside useful sentences.`,
       `Connect words to a real situation instead of memorising an isolated list.`
     ];
@@ -65,7 +104,7 @@
     return groups;
   }
   function readingText(unit,n){
-    const v=unit.vocab;
+    const v=lessonWords(unit,n);
     if(n===1) return unit.sample_ar;
     if(n===2) return `${unit.sample_ar} أستخدمُ ${v[0][0]} و${v[1][0]} في جملةٍ واضحة.`;
     if(n===3) return `${unit.sample_ar} في هذا السياق نلاحظُ أيضًا ${v[2][0]} و${v[3][0]}.`;
@@ -92,8 +131,9 @@
   }
   function makeLesson(unit,n){
     const lt=lessonTitle(unit,n), v=unit.vocab;
+    const lessonVocab=lessonWords(unit,n);
     const text=readingText(unit,n), aid=readingAid(unit,n);
-    const speak = n===1 ? unit.sample_ar : n===2 ? `${v[0][0]} — ${v[1][0]} — ${unit.sample_ar}` : text;
+    const speak = n===1 ? unit.sample_ar : n===2 ? `${lessonVocab[0][0]} — ${lessonVocab[1][0]} — ${unit.sample_ar}` : text;
     const speakAid = n===1 ? `Repeat the model, then replace one detail with information that is true for you.` :
       n===2 ? `Say the key words separately, then use them inside the model sentence.` :
       n===3 ? `Read the short text aloud once slowly and once at a natural pace.` :
@@ -105,7 +145,8 @@
       subtitle:unit.subtitle,
       goal:`${unit.product.charAt(0).toUpperCase()+unit.product.slice(1)} using ${unit.grammar}.`,
       goal_ar:`استخدم موضوع «${unit.title_ar}» لتطوير القدرة على ${unit.product} مع التركيز على ${unit.grammar}.`,
-      art:v.slice((n-1)*2,(n-1)*2+4).map(x=>x[0]).join(' · ') || v.slice(0,4).map(x=>x[0]).join(' · '),
+      art:lessonVocab[0][0],
+      vocabulary:lessonVocab,
       topics:unit.tags,
       learn:{
         intro_ar:text,
@@ -126,7 +167,7 @@
         why_aid:`Vocabulary becomes more useful when it is tied to sentences and real situations, so comprehension and production are trained together.`,
         how_ar:`استمع إلى النموذج، لاحظ الكلمات الجديدة، ثم غيّر عنصرًا واحدًا في كل مرة قبل إنتاج جملة أو فقرة جديدة.`,
         how_aid:`Listen to the model, notice the new words, then change one element at a time before producing a new sentence or paragraph.`,
-        examples:v.slice((n-1)*2,(n-1)*2+4).length>=2 ? v.slice((n-1)*2,(n-1)*2+4) : v.slice(0,4),
+        examples:lessonVocab,
         note_ar:`السياق الإقليمي يغيّر أسماء المدن والعملات والأماكن عند الحاجة، لكنه لا يحوّل الدرس إلى لهجة محلية.`,
         note_aid:`Regional context can change cities, currencies and local examples, but the language remains Modern Standard Arabic.`
       },
@@ -144,12 +185,12 @@
                   `Complete a review task: write a connected paragraph combining vocabulary, the language focus and a real example.`
       },
       review:[
-        `مفردات أساسية: ${v.slice(0,5).map(x=>x[0]).join('، ')}.`,
+        `مفردات هذا الدرس: ${lessonVocab.map(x=>x[0]).join('، ')}.`,
         `التركيز اللغوي: ${unit.grammar}.`,
         `الهدف العملي: ${unit.product}.`
       ],
       review_aid:[
-        `Core vocabulary: ${v.slice(0,5).map(x=>x[1]).join(', ')}.`,
+        `Lesson vocabulary: ${lessonVocab.map(x=>x[1]).join(', ')}.`,
         `Language focus: ${unit.grammar}.`,
         `Real-world goal: ${unit.product}.`
       ],
@@ -178,7 +219,7 @@
   window.ARABIC_COURSE={
     courseTitle:'Arabic Pathways — International',
     courseLanguage:'Modern Standard Arabic',
-    version:'0.3.0',
+    version:'0.4.2',
     levels,levelOrder:LEVEL_ORDER,allUnits,allLessons,lessonIndex,unitIndex,
     stats:{levels:LEVEL_ORDER.length,units:allUnits.length,lessons:allLessons.length},
     coverage:[...new Set(allUnits.flatMap(u=>u.tags||[]))].sort()
